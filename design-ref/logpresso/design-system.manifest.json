@@ -1,0 +1,3202 @@
+{
+  "$schema": "design-system.schema.json",
+  "schemaVersion": "1.0.0",
+  "name": "Logpresso Design System",
+  "version": "0.2.0-preview",
+  "purpose": "Public AI-consumable design system entrypoint for reference design, mockup generation, and screen specification.",
+  "runtime": {
+    "defaultLocale": "ko",
+    "supportedLocales": [
+      "ko",
+      "en"
+    ],
+    "defaultFramework": "HTML",
+    "supportedFrameworks": [
+      "HTML",
+      "React",
+      "Vue",
+      "Angular"
+    ],
+    "defaultTheme": "light",
+    "versioningPolicy": "Use semantic versioning: bump major for incompatible public contract changes, minor for new agent/component/runtime capabilities, and patch for compatible fixes.",
+    "localePolicy": "Source Markdown may provide paired ko/en ds-locale blocks for human-facing descriptions while component truth, token names, state names, file paths, selectors, and code identifiers stay exact."
+  },
+  "entrypoints": {
+    "webCatalog": "index.html",
+    "manifest": "design-system.manifest.json",
+    "manifestSchema": "design-system.schema.json",
+    "aiAgentGuide": "docs/AI-AGENT-GUIDE.md",
+    "componentIndex": "docs/components/components.md",
+    "patternIndex": "docs/patterns/patterns.md",
+    "foundationDirectory": "docs/foundation",
+    "rulesDirectory": "docs/rules",
+    "tokenGuide": "docs/tokens/tokens.md",
+    "tokenRegistry": "docs/tokens/design-tokens.json",
+    "accessibilityGuide": "docs/accessibility/accessibility-matrix.md",
+    "accessibilityMatrix": "docs/accessibility/component-accessibility-matrix.json",
+    "accessibilityCoverageGuide": "docs/accessibility/component-accessibility-coverage.md",
+    "accessibilityCoverage": "docs/accessibility/component-accessibility-coverage.json",
+    "referenceScreenExamples": "docs/patterns/reference-screen-examples.json",
+    "referenceScreenExamplesGuide": "docs/patterns/reference-screen-examples.md",
+    "agentStarterPack": "agent-starters.json",
+    "outputTemplate": "docs/ai/reference-design-output-template.md",
+    "readinessReport": "docs/ai/public-readiness-report.md",
+    "publicationPolicy": "docs/ai/publication-policy.md"
+  },
+  "counts": {
+    "components": 65,
+    "foundations": 12,
+    "patterns": 15,
+    "governanceRules": 3
+  },
+  "readingOrder": [
+    "design-system.manifest.json",
+    "docs/AI-AGENT-GUIDE.md",
+    "docs/components/components.md",
+    "docs/patterns/patterns.md",
+    "docs/patterns/reference-screen-examples.json",
+    "docs/tokens/design-tokens.json",
+    "docs/accessibility/component-accessibility-matrix.json",
+    "docs/accessibility/component-accessibility-coverage.json",
+    "docs/ai/publication-policy.md",
+    "target pattern document",
+    "parent composition component documents",
+    "child family component documents",
+    "required foundation documents",
+    "product-specific screen spec"
+  ],
+  "components": [
+    {
+      "name": "GNB",
+      "category": "Navigation / Shell",
+      "sourceCategory": "Navigation / Shell",
+      "status": "reusable composition pattern",
+      "path": "docs/components/GNB.md",
+      "note": "top-level shared shell, child placementì shell rule ìì ",
+      "locales": {
+        "ko": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "reusable composition pattern",
+          "note": "top-level shared shell, child placementì shell rule ìì "
+        },
+        "en": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "reusable composition pattern",
+          "note": "Owns top-level shared shell rules, child placement, and shell rules."
+        }
+      },
+      "compositionHints": [
+        "SNB",
+        "Action Bar",
+        "Page Layout"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Hierarchical Navigation"
+      ]
+    },
+    {
+      "name": "SNB",
+      "category": "Navigation / Shell",
+      "sourceCategory": "Navigation / Shell",
+      "status": "reusable composition pattern",
+      "path": "docs/components/SNB.md",
+      "note": "left-side navigation rail, appNav areaì navList êµ¬ì¡° ìì ",
+      "locales": {
+        "ko": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "reusable composition pattern",
+          "note": "left-side navigation rail, appNav areaì navList êµ¬ì¡° ìì "
+        },
+        "en": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "reusable composition pattern",
+          "note": "Owns the left-side navigation rail, appNav area, and navList structure."
+        }
+      },
+      "compositionHints": [
+        "GNB",
+        "Action Bar",
+        "Page Layout"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Hierarchical Navigation"
+      ]
+    },
+    {
+      "name": "Page Layout",
+      "category": "Navigation / Shell",
+      "sourceCategory": "Navigation / Shell",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Page Layout.md",
+      "note": "GNB/SNB/Main/ActionBar/Content regionì ë°°ì¹íë page-level composition",
+      "locales": {
+        "ko": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "reusable composition pattern",
+          "note": "GNB/SNB/Main/ActionBar/Content regionì ë°°ì¹íë page-level composition"
+        },
+        "en": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "reusable composition pattern",
+          "note": "Places GNB, SNB, main, ActionBar, and content regions."
+        }
+      },
+      "compositionHints": [
+        "GNB",
+        "SNB",
+        "Action Bar"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/content.md"
+      ],
+      "relatedPatterns": [
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Hierarchical Navigation"
+      ]
+    },
+    {
+      "name": "Action Bar",
+      "category": "Navigation / Shell",
+      "sourceCategory": "Navigation / Shell",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Action Bar.md",
+      "note": "parent composition only, child truth ì¬ì ì ê¸ì§",
+      "locales": {
+        "ko": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "reusable composition pattern",
+          "note": "parent composition only, child truth ì¬ì ì ê¸ì§"
+        },
+        "en": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "reusable composition pattern",
+          "note": "Parent composition only; child truth must not be redefined."
+        }
+      },
+      "compositionHints": [
+        "GNB",
+        "SNB",
+        "Page Layout"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Hierarchical Navigation"
+      ]
+    },
+    {
+      "name": "SNBToggle",
+      "category": "Navigation / Shell",
+      "sourceCategory": "Navigation / Shell",
+      "status": "local usage",
+      "path": "docs/components/SNBToggle.md",
+      "note": "GNB ì usage-level icon-only control",
+      "locales": {
+        "ko": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "local usage",
+          "note": "GNB ì usage-level icon-only control"
+        },
+        "en": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "local usage",
+          "note": "Usage-level icon-only control inside GNB."
+        }
+      },
+      "compositionHints": [
+        "GNB",
+        "SNB",
+        "Action Bar",
+        "Page Layout"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Hierarchical Navigation"
+      ]
+    },
+    {
+      "name": "UserConsole",
+      "category": "Navigation / Shell",
+      "sourceCategory": "Navigation / Shell",
+      "status": "local usage",
+      "path": "docs/components/UserConsole.md",
+      "note": "current scopeë entry triggerì GNB ë´ ë°°ì¹ë§ ìì , êµ¬í ì ê¹ì§ iconButton CSS fallback ì¬ì©",
+      "locales": {
+        "ko": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "local usage",
+          "note": "current scopeë entry triggerì GNB ë´ ë°°ì¹ë§ ìì , êµ¬í ì ê¹ì§ iconButton CSS fallback ì¬ì©"
+        },
+        "en": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "local usage",
+          "note": "Current scope owns only the entry trigger and GNB placement; use iconButton CSS fallback until implementation is confirmed."
+        }
+      },
+      "compositionHints": [
+        "GNB",
+        "SNB",
+        "Action Bar",
+        "Page Layout"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Hierarchical Navigation"
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "category": "Navigation / Shell",
+      "sourceCategory": "Navigation / Shell",
+      "status": "family canonical",
+      "path": "docs/components/breadcrumb.md",
+      "note": "path display family",
+      "locales": {
+        "ko": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "family canonical",
+          "note": "path display family"
+        },
+        "en": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "family canonical",
+          "note": "Path display family."
+        }
+      },
+      "compositionHints": [
+        "GNB",
+        "SNB",
+        "Action Bar",
+        "Page Layout"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Hierarchical Navigation"
+      ]
+    },
+    {
+      "name": "tab",
+      "category": "Navigation / Shell",
+      "sourceCategory": "Navigation / Shell",
+      "status": "family canonical",
+      "path": "docs/components/tab.md",
+      "note": "panel/view switching top-tab family",
+      "locales": {
+        "ko": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "family canonical",
+          "note": "panel/view switching top-tab family"
+        },
+        "en": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "family canonical",
+          "note": "Panel or view switching top-tab family."
+        }
+      },
+      "compositionHints": [
+        "GNB",
+        "SNB",
+        "Action Bar",
+        "Page Layout"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Hierarchical Navigation"
+      ]
+    },
+    {
+      "name": "tabNav",
+      "category": "Navigation / Shell",
+      "sourceCategory": "Navigation / Shell",
+      "status": "family canonical",
+      "path": "docs/components/tabNav.md",
+      "note": "content/modal/drawer strip navigation family",
+      "locales": {
+        "ko": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "family canonical",
+          "note": "content/modal/drawer strip navigation family"
+        },
+        "en": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "family canonical",
+          "note": "Content, modal, and drawer strip navigation family."
+        }
+      },
+      "compositionHints": [
+        "GNB",
+        "SNB",
+        "Action Bar",
+        "Page Layout"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/layer.md",
+        "docs/foundation/content.md"
+      ],
+      "relatedPatterns": [
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Hierarchical Navigation"
+      ]
+    },
+    {
+      "name": "pillTabs",
+      "category": "Navigation / Shell",
+      "sourceCategory": "Navigation / Shell",
+      "status": "family canonical",
+      "path": "docs/components/pillTabs.md",
+      "note": "compact segmented tab family, direction variant í¬í¨",
+      "locales": {
+        "ko": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "family canonical",
+          "note": "compact segmented tab family, direction variant í¬í¨"
+        },
+        "en": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "family canonical",
+          "note": "Compact segmented tab family, including the direction variant."
+        }
+      },
+      "compositionHints": [
+        "GNB",
+        "SNB",
+        "Action Bar",
+        "Page Layout"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Hierarchical Navigation"
+      ]
+    },
+    {
+      "name": "tabAdd",
+      "category": "Navigation / Shell",
+      "sourceCategory": "Navigation / Shell",
+      "status": "reusable composition pattern",
+      "path": "docs/components/tabAdd.md",
+      "note": "horizontal overflow controls + add shared accessory pattern",
+      "locales": {
+        "ko": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "reusable composition pattern",
+          "note": "horizontal overflow controls + add shared accessory pattern"
+        },
+        "en": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "reusable composition pattern",
+          "note": "Shared horizontal overflow controls and add accessory pattern."
+        }
+      },
+      "compositionHints": [
+        "GNB",
+        "SNB",
+        "Action Bar",
+        "Page Layout"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Hierarchical Navigation"
+      ]
+    },
+    {
+      "name": "Stepper",
+      "category": "Navigation / Shell",
+      "sourceCategory": "Navigation / Shell",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Stepper.md",
+      "note": "wizard/process step navigation component",
+      "locales": {
+        "ko": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "reusable composition pattern",
+          "note": "wizard/process step navigation component"
+        },
+        "en": {
+          "category": "Navigation / Shell",
+          "sourceCategory": "Navigation / Shell",
+          "status": "reusable composition pattern",
+          "note": "Wizard and process step navigation component."
+        }
+      },
+      "compositionHints": [
+        "GNB",
+        "SNB",
+        "Action Bar",
+        "Page Layout"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Hierarchical Navigation"
+      ]
+    },
+    {
+      "name": "Button",
+      "category": "Actions",
+      "sourceCategory": "Actions",
+      "status": "family canonical",
+      "path": "docs/components/Button.md",
+      "note": "text button family canonical truth",
+      "locales": {
+        "ko": {
+          "category": "Actions",
+          "sourceCategory": "Actions",
+          "status": "family canonical",
+          "note": "text button family canonical truth"
+        },
+        "en": {
+          "category": "Actions",
+          "sourceCategory": "Actions",
+          "status": "family canonical",
+          "note": "Canonical truth for the text button family."
+        }
+      },
+      "compositionHints": [
+        "iconButton",
+        "buttonGroup"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "UX Destructive Action",
+        "UX Form Submission",
+        "UX Empty State Recovery",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "iconButton",
+      "category": "Actions",
+      "sourceCategory": "Actions",
+      "status": "family canonical",
+      "path": "docs/components/iconButton.md",
+      "note": "icon-centered sibling family canonical truth",
+      "locales": {
+        "ko": {
+          "category": "Actions",
+          "sourceCategory": "Actions",
+          "status": "family canonical",
+          "note": "icon-centered sibling family canonical truth"
+        },
+        "en": {
+          "category": "Actions",
+          "sourceCategory": "Actions",
+          "status": "family canonical",
+          "note": "Canonical truth for the icon-centered sibling family."
+        }
+      },
+      "compositionHints": [
+        "Button",
+        "buttonGroup"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "UX Destructive Action",
+        "UX Form Submission",
+        "UX Empty State Recovery",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "buttonGroup",
+      "category": "Actions",
+      "sourceCategory": "Actions",
+      "status": "reusable composition pattern",
+      "path": "docs/components/buttonGroup.md",
+      "note": "Button childë§ ë°ë³µíë same-family group",
+      "locales": {
+        "ko": {
+          "category": "Actions",
+          "sourceCategory": "Actions",
+          "status": "reusable composition pattern",
+          "note": "Button childë§ ë°ë³µíë same-family group"
+        },
+        "en": {
+          "category": "Actions",
+          "sourceCategory": "Actions",
+          "status": "reusable composition pattern",
+          "note": "Same-family group that repeats only Button children."
+        }
+      },
+      "compositionHints": [
+        "Button",
+        "iconButton"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "UX Destructive Action",
+        "UX Form Submission",
+        "UX Empty State Recovery",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "iconButtonGroup",
+      "category": "Actions",
+      "sourceCategory": "Actions",
+      "status": "reusable composition pattern",
+      "path": "docs/components/iconButtonGroup.md",
+      "note": "iconButton childë§ ë°ë³µíë same-family group",
+      "locales": {
+        "ko": {
+          "category": "Actions",
+          "sourceCategory": "Actions",
+          "status": "reusable composition pattern",
+          "note": "iconButton childë§ ë°ë³µíë same-family group"
+        },
+        "en": {
+          "category": "Actions",
+          "sourceCategory": "Actions",
+          "status": "reusable composition pattern",
+          "note": "Same-family group that repeats only iconButton children."
+        }
+      },
+      "compositionHints": [
+        "Button",
+        "iconButton",
+        "buttonGroup"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "UX Destructive Action",
+        "UX Form Submission",
+        "UX Empty State Recovery",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "Input",
+      "category": "Inputs / Search / Selection",
+      "sourceCategory": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "path": "docs/components/Input.md",
+      "note": "single-line text entry specialization, Form Field Foundationì historical field boundaryë¥¼ Input ê³ì´ë¡ ë¶ì° í¸ì",
+      "locales": {
+        "ko": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "single-line text entry specialization, Form Field Foundationì historical field boundaryë¥¼ Input ê³ì´ë¡ ë¶ì° í¸ì"
+        },
+        "en": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "Single-line text entry specialization; the historical Form Field Foundation boundary is distributed into Input-family documents."
+        }
+      },
+      "compositionHints": [
+        "Form Layout",
+        "Select",
+        "InlineAlert"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Settings / Policy Form",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Loading Feedback",
+        "UX Form Submission",
+        "UX Inline Editing",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "DateInput",
+      "category": "Inputs / Search / Selection",
+      "sourceCategory": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "path": "docs/components/DateInput.md",
+      "note": "single-date field shell family",
+      "locales": {
+        "ko": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "single-date field shell family"
+        },
+        "en": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "Single-date field shell family."
+        }
+      },
+      "compositionHints": [
+        "Form Layout",
+        "Input",
+        "Select",
+        "InlineAlert"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Settings / Policy Form",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Loading Feedback",
+        "UX Form Submission",
+        "UX Inline Editing",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "DateRangeInput",
+      "category": "Inputs / Search / Selection",
+      "sourceCategory": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "path": "docs/components/DateRangeInput.md",
+      "note": "paired date range field shell family",
+      "locales": {
+        "ko": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "paired date range field shell family"
+        },
+        "en": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "Paired date range field shell family."
+        }
+      },
+      "compositionHints": [
+        "Form Layout",
+        "Input",
+        "Select",
+        "InlineAlert"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Settings / Policy Form",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Loading Feedback",
+        "UX Form Submission",
+        "UX Inline Editing",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "Search",
+      "category": "Inputs / Search / Selection",
+      "sourceCategory": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "path": "docs/components/Search.md",
+      "note": "SearchInput family truth + local usage boundary í¬í¨",
+      "locales": {
+        "ko": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "SearchInput family truth + local usage boundary í¬í¨"
+        },
+        "en": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "Owns SearchInput family truth and local usage boundaries."
+        }
+      },
+      "compositionHints": [
+        "Form Layout",
+        "Input",
+        "Select",
+        "InlineAlert"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Settings / Policy Form",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Loading Feedback",
+        "UX Form Submission",
+        "UX Inline Editing",
+        "UX Empty State Recovery",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "Select",
+      "category": "Inputs / Search / Selection",
+      "sourceCategory": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "path": "docs/components/Select.md",
+      "note": "selection field specialization, attached-actionsë deprecated",
+      "locales": {
+        "ko": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "selection field specialization, attached-actionsë deprecated"
+        },
+        "en": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "Selection field specialization; attached-actions are deprecated."
+        }
+      },
+      "compositionHints": [
+        "Form Layout",
+        "Input",
+        "InlineAlert"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Settings / Policy Form",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Loading Feedback",
+        "UX Form Submission",
+        "UX Inline Editing",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "Textarea",
+      "category": "Inputs / Search / Selection",
+      "sourceCategory": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "path": "docs/components/Textarea.md",
+      "note": "multiline text entry specialization",
+      "locales": {
+        "ko": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "multiline text entry specialization"
+        },
+        "en": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "Multiline text entry specialization."
+        }
+      },
+      "compositionHints": [
+        "Form Layout",
+        "Input",
+        "Select",
+        "InlineAlert"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Settings / Policy Form",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Loading Feedback",
+        "UX Form Submission",
+        "UX Inline Editing",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "fieldLabel",
+      "category": "Inputs / Search / Selection",
+      "sourceCategory": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "path": "docs/components/fieldLabel.md",
+      "note": "controlì´ ìëë¼ shared label primitive",
+      "locales": {
+        "ko": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "controlì´ ìëë¼ shared label primitive"
+        },
+        "en": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "Shared label primitive, not a control."
+        }
+      },
+      "compositionHints": [
+        "Form Layout",
+        "Input",
+        "Select",
+        "InlineAlert"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/content.md"
+      ],
+      "relatedPatterns": [
+        "Settings / Policy Form",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Loading Feedback",
+        "UX Form Submission",
+        "UX Inline Editing",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "Field Item",
+      "category": "Inputs / Search / Selection",
+      "sourceCategory": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "path": "docs/components/Field Item.md",
+      "note": "compact selected/applied field row",
+      "locales": {
+        "ko": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "compact selected/applied field row"
+        },
+        "en": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "Compact selected or applied field row."
+        }
+      },
+      "compositionHints": [
+        "Form Layout",
+        "Input",
+        "Select",
+        "InlineAlert"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/state.md"
+      ],
+      "relatedPatterns": [
+        "Settings / Policy Form",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Loading Feedback",
+        "UX Form Submission",
+        "UX Inline Editing",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "Form Layout",
+      "category": "Inputs / Search / Selection",
+      "sourceCategory": "Inputs / Search / Selection",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Form Layout.md",
+      "note": "label/control/message/action rowë¥¼ ë¬¶ë form parent composition",
+      "locales": {
+        "ko": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "reusable composition pattern",
+          "note": "label/control/message/action rowë¥¼ ë¬¶ë form parent composition"
+        },
+        "en": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "reusable composition pattern",
+          "note": "Form parent composition for label, control, message, and action row."
+        }
+      },
+      "compositionHints": [
+        "Input",
+        "Select",
+        "InlineAlert"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/content.md"
+      ],
+      "relatedPatterns": [
+        "Settings / Policy Form",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Loading Feedback",
+        "UX Form Submission",
+        "UX Inline Editing",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "Checkbox",
+      "category": "Inputs / Search / Selection",
+      "sourceCategory": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "path": "docs/components/Checkbox.md",
+      "note": "multi-select primitive control",
+      "locales": {
+        "ko": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "multi-select primitive control"
+        },
+        "en": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "Multi-select primitive control."
+        }
+      },
+      "compositionHints": [
+        "Form Layout",
+        "Input",
+        "Select",
+        "InlineAlert"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Settings / Policy Form",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Loading Feedback",
+        "UX Form Submission",
+        "UX Inline Editing",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "Radio",
+      "category": "Inputs / Search / Selection",
+      "sourceCategory": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "path": "docs/components/Radio.md",
+      "note": "single-select primitive control",
+      "locales": {
+        "ko": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "single-select primitive control"
+        },
+        "en": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "Single-select primitive control."
+        }
+      },
+      "compositionHints": [
+        "Form Layout",
+        "Input",
+        "Select",
+        "InlineAlert"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Settings / Policy Form",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Loading Feedback",
+        "UX Form Submission",
+        "UX Inline Editing",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "Switch",
+      "category": "Inputs / Search / Selection",
+      "sourceCategory": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "path": "docs/components/Switch.md",
+      "note": "on/off primitive control",
+      "locales": {
+        "ko": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "on/off primitive control"
+        },
+        "en": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "family canonical",
+          "note": "On/off primitive control."
+        }
+      },
+      "compositionHints": [
+        "Form Layout",
+        "Input",
+        "Select",
+        "InlineAlert"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Settings / Policy Form",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Loading Feedback",
+        "UX Optimistic Update",
+        "UX Form Submission",
+        "UX Inline Editing",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "Checkbox Group",
+      "category": "Inputs / Search / Selection",
+      "sourceCategory": "Inputs / Search / Selection",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Checkbox Group.md",
+      "note": "repeated checkbox row stack",
+      "locales": {
+        "ko": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "reusable composition pattern",
+          "note": "repeated checkbox row stack"
+        },
+        "en": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "reusable composition pattern",
+          "note": "Repeated checkbox row stack."
+        }
+      },
+      "compositionHints": [
+        "Form Layout",
+        "Input",
+        "Select",
+        "InlineAlert"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Settings / Policy Form",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Loading Feedback",
+        "UX Form Submission",
+        "UX Inline Editing",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "Radio Group",
+      "category": "Inputs / Search / Selection",
+      "sourceCategory": "Inputs / Search / Selection",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Radio Group.md",
+      "note": "repeated radio row stack",
+      "locales": {
+        "ko": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "reusable composition pattern",
+          "note": "repeated radio row stack"
+        },
+        "en": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "reusable composition pattern",
+          "note": "Repeated radio row stack."
+        }
+      },
+      "compositionHints": [
+        "Form Layout",
+        "Input",
+        "Select",
+        "InlineAlert"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Settings / Policy Form",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Loading Feedback",
+        "UX Form Submission",
+        "UX Inline Editing",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "Switch Group",
+      "category": "Inputs / Search / Selection",
+      "sourceCategory": "Inputs / Search / Selection",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Switch Group.md",
+      "note": "repeated switch row stack",
+      "locales": {
+        "ko": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "reusable composition pattern",
+          "note": "repeated switch row stack"
+        },
+        "en": {
+          "category": "Inputs / Search / Selection",
+          "sourceCategory": "Inputs / Search / Selection",
+          "status": "reusable composition pattern",
+          "note": "Repeated switch row stack."
+        }
+      },
+      "compositionHints": [
+        "Form Layout",
+        "Input",
+        "Select",
+        "InlineAlert"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Settings / Policy Form",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Loading Feedback",
+        "UX Form Submission",
+        "UX Inline Editing",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "dropdownList",
+      "category": "Dropdown / List",
+      "sourceCategory": "Dropdown / List",
+      "status": "family canonical",
+      "path": "docs/components/dropdownList.md",
+      "note": "overlay surface family, rowType/hasFooter canonical naming ì¬ì©",
+      "locales": {
+        "ko": {
+          "category": "Dropdown / List",
+          "sourceCategory": "Dropdown / List",
+          "status": "family canonical",
+          "note": "overlay surface family, rowType/hasFooter canonical naming ì¬ì©"
+        },
+        "en": {
+          "category": "Dropdown / List",
+          "sourceCategory": "Dropdown / List",
+          "status": "family canonical",
+          "note": "Overlay surface family that uses canonical rowType and hasFooter naming."
+        }
+      },
+      "compositionHints": [
+        "Menu",
+        "List"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/layer.md"
+      ],
+      "relatedPatterns": [
+        "List Detail",
+        "Audit / Event History"
+      ]
+    },
+    {
+      "name": "dropdownCheckboxList",
+      "category": "Dropdown / List",
+      "sourceCategory": "Dropdown / List",
+      "status": "family canonical",
+      "path": "docs/components/dropdownCheckboxList.md",
+      "note": "checkbox selection-row surface family",
+      "locales": {
+        "ko": {
+          "category": "Dropdown / List",
+          "sourceCategory": "Dropdown / List",
+          "status": "family canonical",
+          "note": "checkbox selection-row surface family"
+        },
+        "en": {
+          "category": "Dropdown / List",
+          "sourceCategory": "Dropdown / List",
+          "status": "family canonical",
+          "note": "Checkbox selection-row surface family."
+        }
+      },
+      "compositionHints": [
+        "dropdownList",
+        "Menu",
+        "List"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/layer.md"
+      ],
+      "relatedPatterns": [
+        "List Detail",
+        "Audit / Event History"
+      ]
+    },
+    {
+      "name": "dropdownRadioboxList",
+      "category": "Dropdown / List",
+      "sourceCategory": "Dropdown / List",
+      "status": "family canonical",
+      "path": "docs/components/dropdownRadioboxList.md",
+      "note": "radiobox selection-row surface family",
+      "locales": {
+        "ko": {
+          "category": "Dropdown / List",
+          "sourceCategory": "Dropdown / List",
+          "status": "family canonical",
+          "note": "radiobox selection-row surface family"
+        },
+        "en": {
+          "category": "Dropdown / List",
+          "sourceCategory": "Dropdown / List",
+          "status": "family canonical",
+          "note": "Radiobox selection-row surface family."
+        }
+      },
+      "compositionHints": [
+        "dropdownList",
+        "Menu",
+        "List"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/layer.md"
+      ],
+      "relatedPatterns": [
+        "List Detail",
+        "Audit / Event History"
+      ]
+    },
+    {
+      "name": "Menu",
+      "category": "Dropdown / List",
+      "sourceCategory": "Dropdown / List",
+      "status": "superseded",
+      "path": "docs/components/Menu.md",
+      "note": "use Action Menu + Overlay Row / Command; trigger/open examples live in 17A Components - Overlay Panels",
+      "locales": {
+        "ko": {
+          "category": "Dropdown / List",
+          "sourceCategory": "Dropdown / List",
+          "status": "superseded",
+          "note": "use Action Menu + Overlay Row / Command; trigger/open examples live in 17A Components - Overlay Panels"
+        },
+        "en": {
+          "category": "Dropdown / List",
+          "sourceCategory": "Dropdown / List",
+          "status": "superseded",
+          "note": "Use Action Menu and Overlay Row / Command; trigger and open examples live in 17A Components - Overlay Panels."
+        }
+      },
+      "compositionHints": [
+        "dropdownList",
+        "List"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/layer.md"
+      ],
+      "relatedPatterns": [
+        "List Detail",
+        "Audit / Event History"
+      ]
+    },
+    {
+      "name": "List",
+      "category": "Dropdown / List",
+      "sourceCategory": "Dropdown / List",
+      "status": "reusable composition pattern",
+      "path": "docs/components/List.md",
+      "note": "repeated content item list, table/menu/dropdownê³¼ êµ¬ë¶",
+      "locales": {
+        "ko": {
+          "category": "Dropdown / List",
+          "sourceCategory": "Dropdown / List",
+          "status": "reusable composition pattern",
+          "note": "repeated content item list, table/menu/dropdownê³¼ êµ¬ë¶"
+        },
+        "en": {
+          "category": "Dropdown / List",
+          "sourceCategory": "Dropdown / List",
+          "status": "reusable composition pattern",
+          "note": "Repeated content item list, distinct from table, menu, and dropdown."
+        }
+      },
+      "compositionHints": [
+        "dropdownList",
+        "Menu"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/layer.md",
+        "docs/foundation/content.md"
+      ],
+      "relatedPatterns": [
+        "List Detail",
+        "Audit / Event History"
+      ]
+    },
+    {
+      "name": "Divider",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/Divider.md",
+      "note": "exact primitive truth ìì ",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "exact primitive truth ìì "
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Owns exact primitive truth."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action"
+      ]
+    },
+    {
+      "name": "Modal",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/Modal.md",
+      "note": "width variantë¥¼ ê°ì§ modal shell family, footer close-capable region í¬í¨",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "width variantë¥¼ ê°ì§ modal shell family, footer close-capable region í¬í¨"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Modal shell family with width variants and a footer close-capable region."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/layer.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action"
+      ]
+    },
+    {
+      "name": "Popover",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Popover.md",
+      "note": "triggerì ë¶ë non-blocking floating panel parent",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "reusable composition pattern",
+          "note": "triggerì ë¶ë non-blocking floating panel parent"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "reusable composition pattern",
+          "note": "Non-blocking floating panel parent attached to a trigger."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action"
+      ]
+    },
+    {
+      "name": "Disclosure",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Disclosure.md",
+      "note": "trigger rowì collapsible panelì ì¡°í©íë content parent",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "reusable composition pattern",
+          "note": "trigger rowì collapsible panelì ì¡°í©íë content parent"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "reusable composition pattern",
+          "note": "Content parent that combines a trigger row and collapsible panel."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/content.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "Audit / Event History",
+        "UX Bulk Action",
+        "UX Destructive Action"
+      ]
+    },
+    {
+      "name": "Skeleton",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/Skeleton.md",
+      "note": "loading placeholder primitive, final layout rhythm ë³´ì¡´",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "loading placeholder primitive, final layout rhythm ë³´ì¡´"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Loading placeholder primitive that preserves final layout rhythm."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/spacing.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action",
+        "UX Loading Feedback"
+      ]
+    },
+    {
+      "name": "Badge",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/Badge.md",
+      "note": "leading markerì labelì ê°ì§ compact display marker family",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "leading markerì labelì ê°ì§ compact display marker family"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Compact display marker family with a leading marker and label."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/content.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "Audit / Event History",
+        "UX Bulk Action",
+        "UX Destructive Action"
+      ]
+    },
+    {
+      "name": "Tag",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/Tag.md",
+      "note": "item-identity chip family, optional trailing remove affordance í¬í¨",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "item-identity chip family, optional trailing remove affordance í¬í¨"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Item-identity chip family with optional trailing remove affordance."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action"
+      ]
+    },
+    {
+      "name": "Pagination",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Pagination.md",
+      "note": "parent composition + supporting child control boundary ìì ",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "reusable composition pattern",
+          "note": "parent composition + supporting child control boundary ìì "
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "reusable composition pattern",
+          "note": "Parent composition plus supporting child control boundary."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action"
+      ]
+    },
+    {
+      "name": "Table",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Table.md",
+      "note": "column schema, header/body row stack, optional footerë¥¼ ìì íë table parent",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "reusable composition pattern",
+          "note": "column schema, header/body row stack, optional footerë¥¼ ìì íë table parent"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "reusable composition pattern",
+          "note": "Table parent that owns column schema, header/body row stack, and optional footer."
+        }
+      },
+      "compositionHints": [
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action"
+      ]
+    },
+    {
+      "name": "Table Cell",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/Table Cell.md",
+      "note": "tableGrid cell shellê³¼ tableGrid specialized/domain sample ìì ",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "tableGrid cell shellê³¼ tableGrid specialized/domain sample ìì "
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Owns tableGrid cell shell and tableGrid specialized/domain samples."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action",
+        "UX Inline Editing"
+      ]
+    },
+    {
+      "name": "Data Table Cell",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/Data Table Cell.md",
+      "note": "dataGrid compact cell shell, editable proof, mode sample ìì ",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "dataGrid compact cell shell, editable proof, mode sample ìì "
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Owns dataGrid compact cell shell, editable proof, and mode samples."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action"
+      ]
+    },
+    {
+      "name": "Sheet Table Cell",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/Sheet Table Cell.md",
+      "note": "sheetsGrid compact cell shellê³¼ sheet mode sample ìì ",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "sheetsGrid compact cell shellê³¼ sheet mode sample ìì "
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Owns sheetsGrid compact cell shell and sheet mode samples."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action"
+      ]
+    },
+    {
+      "name": "Toast",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/Toast.md",
+      "note": "large dismissible status message family",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "large dismissible status message family"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Large dismissible status message family."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/content.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action",
+        "UX Optimistic Update"
+      ]
+    },
+    {
+      "name": "InlineAlert",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/InlineAlert.md",
+      "note": "compact one-line status message family",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "compact one-line status message family"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Compact one-line status message family."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/content.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "Settings / Policy Form",
+        "UX Bulk Action",
+        "UX Destructive Action",
+        "UX Loading Feedback",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "StatusDot",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/StatusDot.md",
+      "note": "single-dot status indicator family",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "single-dot status indicator family"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Single-dot status indicator family."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action",
+        "UX Optimistic Update"
+      ]
+    },
+    {
+      "name": "PriorityIndicator",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/PriorityIndicator.md",
+      "note": "three-dot level indicator family",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "three-dot level indicator family"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Three-dot level indicator family."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action"
+      ]
+    },
+    {
+      "name": "ProgressBar",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/ProgressBar.md",
+      "note": "compact horizontal progress indicator family",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "compact horizontal progress indicator family"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Compact horizontal progress indicator family."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action",
+        "UX Loading Feedback"
+      ]
+    },
+    {
+      "name": "Slider",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/Slider.md",
+      "note": "compact horizontal slider family",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "compact horizontal slider family"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Compact horizontal slider family."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action"
+      ]
+    },
+    {
+      "name": "Tooltip",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/Tooltip.md",
+      "note": "floating helper surface family, text tooltip current truthì rich-content proof í¬í¨",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "floating helper surface family, text tooltip current truthì rich-content proof í¬í¨"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Floating helper surface family with text tooltip current truth and rich-content proof."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/content.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action",
+        "UX Permission Based UI"
+      ]
+    },
+    {
+      "name": "CalendarSurface",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "reusable composition pattern",
+      "path": "docs/components/CalendarSurface.md",
+      "note": "date picker overlay surfaceì source-confirmed interior region geometry ìì ",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "reusable composition pattern",
+          "note": "date picker overlay surfaceì source-confirmed interior region geometry ìì "
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "reusable composition pattern",
+          "note": "Owns date picker overlay surface and source-confirmed interior region geometry."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/layer.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action"
+      ]
+    },
+    {
+      "name": "Tree Panel Composition",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Tree Panel Composition.md",
+      "note": "SearchInput + dropdownCheckboxListItemë¥¼ ë´ë collapsible panel composition",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "reusable composition pattern",
+          "note": "SearchInput + dropdownCheckboxListItemë¥¼ ë´ë collapsible panel composition"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "reusable composition pattern",
+          "note": "Collapsible panel composition containing SearchInput + dropdownCheckboxListItem."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/layer.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "Workflow / Guided Setup",
+        "UX Bulk Action",
+        "UX Destructive Action"
+      ]
+    },
+    {
+      "name": "Filter & Multi Sort",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "local usage",
+      "path": "docs/components/Filter & Multi Sort.md",
+      "note": "Action Bar ì local filter/sort system, query logicì ì ì¸",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "local usage",
+          "note": "Action Bar ì local filter/sort system, query logicì ì ì¸"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "local usage",
+          "note": "Local filter/sort system above Action Bar; query logic is excluded."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action"
+      ]
+    },
+    {
+      "name": "InlineMessage",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "family canonical",
+      "path": "docs/components/InlineMessage.md",
+      "note": "inline message + inline code supporting proof",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "inline message + inline code supporting proof"
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "family canonical",
+          "note": "Inline message and inline code supporting proof."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/content.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action",
+        "UX Inline Editing"
+      ]
+    },
+    {
+      "name": "Blankslate",
+      "category": "Supporting",
+      "sourceCategory": "Supporting",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Blankslate.md",
+      "note": "centered empty-state composition pattern, title/description/action ordering ìì ",
+      "locales": {
+        "ko": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "reusable composition pattern",
+          "note": "centered empty-state composition pattern, title/description/action ordering ìì "
+        },
+        "en": {
+          "category": "Supporting",
+          "sourceCategory": "Supporting",
+          "status": "reusable composition pattern",
+          "note": "Centered empty-state composition pattern, including title, description, and action ordering."
+        }
+      },
+      "compositionHints": [
+        "Table",
+        "Pagination",
+        "Filter & Multi Sort",
+        "Modal"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/state.md",
+        "docs/foundation/content.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "List Detail",
+        "UX Bulk Action",
+        "UX Destructive Action",
+        "UX Empty State Recovery"
+      ]
+    },
+    {
+      "name": "Surface Foundation",
+      "category": "Surface",
+      "sourceCategory": "Surface",
+      "status": "supporting boundary",
+      "path": "docs/components/Surface-Foundation.md",
+      "note": "container/item patternì narrow shared surface grammarë§ ìì ",
+      "locales": {
+        "ko": {
+          "category": "Surface",
+          "sourceCategory": "Surface",
+          "status": "supporting boundary",
+          "note": "container/item patternì narrow shared surface grammarë§ ìì "
+        },
+        "en": {
+          "category": "Surface",
+          "sourceCategory": "Surface",
+          "status": "supporting boundary",
+          "note": "Owns only the narrow shared surface grammar for container and item patterns."
+        }
+      },
+      "compositionHints": [
+        "Page Layout",
+        "Action Bar"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action"
+      ]
+    },
+    {
+      "name": "Card Item",
+      "category": "Surface",
+      "sourceCategory": "Surface",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Card-Item.md",
+      "note": "repeated item card shell pattern",
+      "locales": {
+        "ko": {
+          "category": "Surface",
+          "sourceCategory": "Surface",
+          "status": "reusable composition pattern",
+          "note": "repeated item card shell pattern"
+        },
+        "en": {
+          "category": "Surface",
+          "sourceCategory": "Surface",
+          "status": "reusable composition pattern",
+          "note": "Repeated item card shell pattern."
+        }
+      },
+      "compositionHints": [
+        "Page Layout",
+        "Action Bar"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action"
+      ]
+    },
+    {
+      "name": "Widget Container",
+      "category": "Surface",
+      "sourceCategory": "Surface",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Widget-Container.md",
+      "note": "dashboard widget/module shell pattern",
+      "locales": {
+        "ko": {
+          "category": "Surface",
+          "sourceCategory": "Surface",
+          "status": "reusable composition pattern",
+          "note": "dashboard widget/module shell pattern"
+        },
+        "en": {
+          "category": "Surface",
+          "sourceCategory": "Surface",
+          "status": "reusable composition pattern",
+          "note": "Dashboard widget/module shell pattern."
+        }
+      },
+      "compositionHints": [
+        "Page Layout",
+        "Action Bar"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Dashboard",
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action"
+      ]
+    },
+    {
+      "name": "Section Container",
+      "category": "Surface",
+      "sourceCategory": "Surface",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Section-Container.md",
+      "note": "section-wide parent surface pattern",
+      "locales": {
+        "ko": {
+          "category": "Surface",
+          "sourceCategory": "Surface",
+          "status": "reusable composition pattern",
+          "note": "section-wide parent surface pattern"
+        },
+        "en": {
+          "category": "Surface",
+          "sourceCategory": "Surface",
+          "status": "reusable composition pattern",
+          "note": "Section-wide parent surface pattern."
+        }
+      },
+      "compositionHints": [
+        "Page Layout",
+        "Action Bar"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md"
+      ],
+      "relatedPatterns": [
+        "Data Table Workflow",
+        "Workflow / Guided Setup",
+        "UX Bulk Action"
+      ]
+    },
+    {
+      "name": "Drawer Container",
+      "category": "Surface",
+      "sourceCategory": "Surface",
+      "status": "reusable composition pattern",
+      "path": "docs/components/Drawer-Container.md",
+      "note": "drawer detail parent surface pattern",
+      "locales": {
+        "ko": {
+          "category": "Surface",
+          "sourceCategory": "Surface",
+          "status": "reusable composition pattern",
+          "note": "drawer detail parent surface pattern"
+        },
+        "en": {
+          "category": "Surface",
+          "sourceCategory": "Surface",
+          "status": "reusable composition pattern",
+          "note": "Drawer detail parent surface pattern."
+        }
+      },
+      "compositionHints": [
+        "Page Layout",
+        "Action Bar"
+      ],
+      "foundationHints": [
+        "docs/foundation/color.md",
+        "docs/foundation/typography.md",
+        "docs/foundation/layer.md"
+      ],
+      "relatedPatterns": [
+        "Data Table Workflow",
+        "List Detail",
+        "Workflow / Guided Setup",
+        "UX Bulk Action"
+      ]
+    }
+  ],
+  "foundations": [
+    {
+      "name": "icon",
+      "category": "Foundation / Shared System",
+      "status": "family canonical",
+      "path": "docs/foundation/icon.md",
+      "note": "icon source root, size system, placeholder boundary",
+      "locales": {
+        "ko": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "icon source root, size system, placeholder boundary"
+        },
+        "en": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "Icon source root, size system, and placeholder boundary."
+        }
+      }
+    },
+    {
+      "name": "color",
+      "category": "Foundation / Shared System",
+      "status": "family canonical",
+      "path": "docs/foundation/color.md",
+      "note": "semantic color principleê³¼ fallback boundary",
+      "locales": {
+        "ko": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "semantic color principleê³¼ fallback boundary"
+        },
+        "en": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "Semantic color principle and fallback boundary."
+        }
+      }
+    },
+    {
+      "name": "spacing",
+      "category": "Foundation / Shared System",
+      "status": "family canonical",
+      "path": "docs/foundation/spacing.md",
+      "note": "Tailwind baseline spacing system",
+      "locales": {
+        "ko": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "Tailwind baseline spacing system"
+        },
+        "en": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "Tailwind baseline spacing system."
+        }
+      }
+    },
+    {
+      "name": "typography",
+      "category": "Foundation / Shared System",
+      "status": "family canonical",
+      "path": "docs/foundation/typography.md",
+      "note": "Pretendard source-of-truthì fallback handling",
+      "locales": {
+        "ko": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "Pretendard source-of-truthì fallback handling"
+        },
+        "en": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "Pretendard source of truth and fallback handling."
+        }
+      }
+    },
+    {
+      "name": "radius",
+      "category": "Foundation / Shared System",
+      "status": "family canonical",
+      "path": "docs/foundation/radius.md",
+      "note": "Tailwind baseline radius system",
+      "locales": {
+        "ko": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "Tailwind baseline radius system"
+        },
+        "en": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "Tailwind baseline radius system."
+        }
+      }
+    },
+    {
+      "name": "border",
+      "category": "Foundation / Shared System",
+      "status": "family canonical",
+      "path": "docs/foundation/border.md",
+      "note": "border/divider/container boundary",
+      "locales": {
+        "ko": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "border/divider/container boundary"
+        },
+        "en": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "Border, divider, and container boundary."
+        }
+      }
+    },
+    {
+      "name": "shadow",
+      "category": "Foundation / Shared System",
+      "status": "family canonical",
+      "path": "docs/foundation/shadow.md",
+      "note": "shared shadow token/system boundary",
+      "locales": {
+        "ko": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "shared shadow token/system boundary"
+        },
+        "en": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "Shared shadow token and system boundary."
+        }
+      }
+    },
+    {
+      "name": "state",
+      "category": "Foundation / Shared System",
+      "status": "family canonical",
+      "path": "docs/foundation/state.md",
+      "note": "shared state modelê³¼ naming boundary",
+      "locales": {
+        "ko": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "shared state modelê³¼ naming boundary"
+        },
+        "en": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "Shared state model and naming boundary."
+        }
+      }
+    },
+    {
+      "name": "accessibility",
+      "category": "Foundation / Shared System",
+      "status": "family canonical",
+      "path": "docs/foundation/accessibility.md",
+      "note": "keyboard, focus-visible, ARIA, contrast, reduced motion boundary",
+      "locales": {
+        "ko": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "keyboard, focus-visible, ARIA, contrast, reduced motion boundary"
+        },
+        "en": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "Keyboard, focus-visible, ARIA, contrast, and reduced motion boundary."
+        }
+      }
+    },
+    {
+      "name": "motion",
+      "category": "Foundation / Shared System",
+      "status": "family canonical",
+      "path": "docs/foundation/motion.md",
+      "note": "duration, easing, transition, reduced motion boundary",
+      "locales": {
+        "ko": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "duration, easing, transition, reduced motion boundary"
+        },
+        "en": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "Duration, easing, transition, and reduced motion boundary."
+        }
+      }
+    },
+    {
+      "name": "layer",
+      "category": "Foundation / Shared System",
+      "status": "family canonical",
+      "path": "docs/foundation/layer.md",
+      "note": "overlay stack, z-index role, portal, focus return boundary",
+      "locales": {
+        "ko": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "overlay stack, z-index role, portal, focus return boundary"
+        },
+        "en": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "Overlay stack, z-index role, portal, and focus return boundary."
+        }
+      }
+    },
+    {
+      "name": "content",
+      "category": "Foundation / Shared System",
+      "status": "family canonical",
+      "path": "docs/foundation/content.md",
+      "note": "label, helper, error, empty, terminology, i18n boundary",
+      "locales": {
+        "ko": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "label, helper, error, empty, terminology, i18n boundary"
+        },
+        "en": {
+          "category": "Foundation / Shared System",
+          "status": "family canonical",
+          "note": "Label, helper, error, empty, terminology, and i18n boundary."
+        }
+      }
+    }
+  ],
+  "patterns": [
+    {
+      "name": "Dashboard",
+      "path": "docs/patterns/dashboard.md",
+      "purpose": "ì´ì ìí, ìì ¯, ì£¼ì ì§í, drill-down entryë¥¼ ì¡°í©íë Sonar ëìë³´ë íë©´",
+      "locales": {
+        "ko": {
+          "purpose": "ì´ì ìí, ìì ¯, ì£¼ì ì§í, drill-down entryë¥¼ ì¡°í©íë Sonar ëìë³´ë íë©´"
+        },
+        "en": {
+          "purpose": "A Sonar dashboard screen that combines operational status, widgets, key metrics, and drill-down entry points."
+        }
+      },
+      "relatedComponents": [
+        "Widget Container",
+        "Card Item",
+        "Table"
+      ]
+    },
+    {
+      "name": "Data Table Workflow",
+      "path": "docs/patterns/data-table-workflow.md",
+      "purpose": "íì§ ê·ì¹, í°ì¼, ë³´ê³ ì, ë°ì´í°ìì²ë¼ ê²ì/íí°/ì ë ¬/íì´ë¸/íì´ì§ë¤ì´ìì´ ì¤ì¬ì¸ ê´ë¦¬ íë©´",
+      "locales": {
+        "ko": {
+          "purpose": "íì§ ê·ì¹, í°ì¼, ë³´ê³ ì, ë°ì´í°ìì²ë¼ ê²ì/íí°/ì ë ¬/íì´ë¸/íì´ì§ë¤ì´ìì´ ì¤ì¬ì¸ ê´ë¦¬ íë©´"
+        },
+        "en": {
+          "purpose": "A management screen centered on search, filters, sorting, tables, and pagination for detection rules, tickets, reports, and datasets."
+        }
+      },
+      "relatedComponents": [
+        "Action Bar",
+        "Filter & Multi Sort",
+        "Pagination"
+      ]
+    },
+    {
+      "name": "List Detail",
+      "path": "docs/patterns/list-detail.md",
+      "purpose": "ëª©ë¡ ì íê³¼ ìì¸ drawer/panelì ê°ì ë¬¸ë§¥ì ì ì§íë íì/ì²ë¦¬ íë©´",
+      "locales": {
+        "ko": {
+          "purpose": "ëª©ë¡ ì íê³¼ ìì¸ drawer/panelì ê°ì ë¬¸ë§¥ì ì ì§íë íì/ì²ë¦¬ íë©´"
+        },
+        "en": {
+          "purpose": "A navigation and handling screen that keeps list selection and a detail drawer or panel in the same context."
+        }
+      },
+      "relatedComponents": [
+        "List",
+        "Table",
+        "Drawer Container"
+      ]
+    },
+    {
+      "name": "Settings / Policy Form",
+      "path": "docs/patterns/settings-form.md",
+      "purpose": "íì§ ì ì±, ìì§ ëª¨ë¸, ê³ì , íë¡íì²ë¼ fieldset ë°ë³µê³¼ ì ì¥ ê²ì¦ì´ ì¤ì¬ì¸ ì¤ì  íë©´",
+      "locales": {
+        "ko": {
+          "purpose": "íì§ ì ì±, ìì§ ëª¨ë¸, ê³ì , íë¡íì²ë¼ fieldset ë°ë³µê³¼ ì ì¥ ê²ì¦ì´ ì¤ì¬ì¸ ì¤ì  íë©´"
+        },
+        "en": {
+          "purpose": "A settings screen centered on repeated fieldsets and save validation for detection policies, collection models, accounts, and profiles."
+        }
+      },
+      "relatedComponents": [
+        "Form Layout",
+        "fieldLabel",
+        "Input",
+        "InlineAlert"
+      ]
+    },
+    {
+      "name": "Audit / Event History",
+      "path": "docs/patterns/audit-timeline.md",
+      "purpose": "ê°ì¬ ë¡ê·¸, í°ì¼ ì´ë ¥, ìë ëì ë´ì­ì²ë¼ ìê°ì ì´ë²¤í¸ì ìì¸ íì¥ì ì½ë íë©´",
+      "locales": {
+        "ko": {
+          "purpose": "ê°ì¬ ë¡ê·¸, í°ì¼ ì´ë ¥, ìë ëì ë´ì­ì²ë¼ ìê°ì ì´ë²¤í¸ì ìì¸ íì¥ì ì½ë íë©´"
+        },
+        "en": {
+          "purpose": "A chronological event reading screen with detail expansion for audit logs, ticket history, and automated response history."
+        }
+      },
+      "relatedComponents": [
+        "List",
+        "Disclosure",
+        "Badge"
+      ]
+    },
+    {
+      "name": "Workflow / Guided Setup",
+      "path": "docs/patterns/wizard-flow.md",
+      "purpose": "ëìë³´ë ìì ¯ ì¶ê°, íë ì´ë¶ êµ¬ì±ì²ë¼ ì¤ì  í¨ëê³¼ êµ¬ì± ìºë²ì¤/íë¦¬ë·°ë¥¼ í¨ê» ë¤ë£¨ë ê°ì´ëí ìì íë©´",
+      "locales": {
+        "ko": {
+          "purpose": "ëìë³´ë ìì ¯ ì¶ê°, íë ì´ë¶ êµ¬ì±ì²ë¼ ì¤ì  í¨ëê³¼ êµ¬ì± ìºë²ì¤/íë¦¬ë·°ë¥¼ í¨ê» ë¤ë£¨ë ê°ì´ëí ìì íë©´"
+        },
+        "en": {
+          "purpose": "A guided task screen that pairs setup panels with a configuration canvas or preview, such as adding dashboard widgets or configuring playbooks."
+        }
+      },
+      "relatedComponents": [
+        "Action Bar",
+        "Form Layout",
+        "Tree Panel Composition"
+      ]
+    },
+    {
+      "name": "UX Bulk Action",
+      "path": "docs/patterns/ux-baseline/bulk-action.md",
+      "purpose": "ë¤ì¤ ì í, ì¼ê´ ì¤í, ë¶ë¶ ì¤í¨ ê²°ê³¼ë¥¼ í¨ê» ì ì§íë action ê¸°ì¤ì ",
+      "locales": {
+        "ko": {
+          "purpose": "ë¤ì¤ ì í, ì¼ê´ ì¤í, ë¶ë¶ ì¤í¨ ê²°ê³¼ë¥¼ í¨ê» ì ì§íë action ê¸°ì¤ì "
+        },
+        "en": {
+          "purpose": "An action baseline that keeps multi-selection, bulk execution, and partial failure results together."
+        }
+      },
+      "relatedComponents": [
+        "Action Bar",
+        "Table",
+        "InlineAlert"
+      ]
+    },
+    {
+      "name": "UX Destructive Action",
+      "path": "docs/patterns/ux-baseline/destructive-action.md",
+      "purpose": "íê´´ì  íëì ìí¥ ì¤ëª, íì¸, ì·¨ì, ê²°ê³¼ í¼ëë°± ê¸°ì¤ì ",
+      "locales": {
+        "ko": {
+          "purpose": "íê´´ì  íëì ìí¥ ì¤ëª, íì¸, ì·¨ì, ê²°ê³¼ í¼ëë°± ê¸°ì¤ì "
+        },
+        "en": {
+          "purpose": "A baseline for explaining impact, confirming, canceling, and reporting the result of destructive actions."
+        }
+      },
+      "relatedComponents": [
+        "Button",
+        "Modal",
+        "Toast"
+      ]
+    },
+    {
+      "name": "UX Loading Feedback",
+      "path": "docs/patterns/ux-baseline/loading-feedback.md",
+      "purpose": "ë¹ëê¸° ì²ë¦¬ ì¤ ëê¸°, ì¤ë³µ ì°¨ë¨, ê²°ê³¼ ì íì ì¤ëªíë feedback ê¸°ì¤ì ",
+      "locales": {
+        "ko": {
+          "purpose": "ë¹ëê¸° ì²ë¦¬ ì¤ ëê¸°, ì¤ë³µ ì°¨ë¨, ê²°ê³¼ ì íì ì¤ëªíë feedback ê¸°ì¤ì "
+        },
+        "en": {
+          "purpose": "A feedback baseline for waiting states, duplicate-action blocking, and result transitions during asynchronous work."
+        }
+      },
+      "relatedComponents": [
+        "Skeleton",
+        "ProgressBar",
+        "InlineAlert"
+      ]
+    },
+    {
+      "name": "UX Optimistic Update",
+      "path": "docs/patterns/ux-baseline/optimistic-update.md",
+      "purpose": "ì¦ì ë°ì, ë°±ê·¸ë¼ì´ë íì , ì¤í¨ rollbackì ë¤ë£¨ë feedback ê¸°ì¤ì ",
+      "locales": {
+        "ko": {
+          "purpose": "ì¦ì ë°ì, ë°±ê·¸ë¼ì´ë íì , ì¤í¨ rollbackì ë¤ë£¨ë feedback ê¸°ì¤ì "
+        },
+        "en": {
+          "purpose": "A feedback baseline for immediate updates, background confirmation, and rollback on failure."
+        }
+      },
+      "relatedComponents": [
+        "Switch",
+        "StatusDot",
+        "Toast"
+      ]
+    },
+    {
+      "name": "UX Form Submission",
+      "path": "docs/patterns/ux-baseline/form-submission.md",
+      "purpose": "ìë ¥, validation, ì ì¶, ì±ê³µê³¼ ì¤í¨ë¥¼ ì°ê²°íë form ê¸°ì¤ì ",
+      "locales": {
+        "ko": {
+          "purpose": "ìë ¥, validation, ì ì¶, ì±ê³µê³¼ ì¤í¨ë¥¼ ì°ê²°íë form ê¸°ì¤ì "
+        },
+        "en": {
+          "purpose": "A form baseline that connects input, validation, submission, success, and failure."
+        }
+      },
+      "relatedComponents": [
+        "Form Layout",
+        "Input",
+        "Button"
+      ]
+    },
+    {
+      "name": "UX Inline Editing",
+      "path": "docs/patterns/ux-baseline/inline-editing.md",
+      "purpose": "íì¬ ë§¥ë½ ììì í¸ì§, commit, cancel, ì¤í¨ ë³µêµ¬ë¥¼ ì²ë¦¬íë ê¸°ì¤ì ",
+      "locales": {
+        "ko": {
+          "purpose": "íì¬ ë§¥ë½ ììì í¸ì§, commit, cancel, ì¤í¨ ë³µêµ¬ë¥¼ ì²ë¦¬íë ê¸°ì¤ì "
+        },
+        "en": {
+          "purpose": "A baseline for editing, commit, cancel, and failure recovery inside the current context."
+        }
+      },
+      "relatedComponents": [
+        "Table Cell",
+        "Input",
+        "InlineMessage"
+      ]
+    },
+    {
+      "name": "UX Hierarchical Navigation",
+      "path": "docs/patterns/ux-baseline/hierarchical-navigation.md",
+      "purpose": "íì¬ ìì¹, ìì ê²½ë¡, ê¹ì ê³ì¸µ ì´ëì ì ì§íë navigation ê¸°ì¤ì ",
+      "locales": {
+        "ko": {
+          "purpose": "íì¬ ìì¹, ìì ê²½ë¡, ê¹ì ê³ì¸µ ì´ëì ì ì§íë navigation ê¸°ì¤ì "
+        },
+        "en": {
+          "purpose": "A navigation baseline that preserves the current location, parent path, and deep hierarchy movement."
+        }
+      },
+      "relatedComponents": [
+        "GNB",
+        "SNB",
+        "breadcrumb"
+      ]
+    },
+    {
+      "name": "UX Empty State Recovery",
+      "path": "docs/patterns/ux-baseline/empty-state-recovery.md",
+      "purpose": "ë¹ ê²°ê³¼ë¥¼ ì¤ëªê³¼ ë¤ì íëì¼ë¡ ì°ê²°íë system-state ê¸°ì¤ì ",
+      "locales": {
+        "ko": {
+          "purpose": "ë¹ ê²°ê³¼ë¥¼ ì¤ëªê³¼ ë¤ì íëì¼ë¡ ì°ê²°íë system-state ê¸°ì¤ì "
+        },
+        "en": {
+          "purpose": "A system-state baseline that connects empty results to explanation and the next available action."
+        }
+      },
+      "relatedComponents": [
+        "Blankslate",
+        "Search",
+        "Button"
+      ]
+    },
+    {
+      "name": "UX Permission Based UI",
+      "path": "docs/patterns/ux-baseline/permission-based-ui.md",
+      "purpose": "ê¶íë³ íë ë¸ì¶, ì í ì¤ëª, read-only ìíë¥¼ ë¤ë£¨ë ê¸°ì¤ì ",
+      "locales": {
+        "ko": {
+          "purpose": "ê¶íë³ íë ë¸ì¶, ì í ì¤ëª, read-only ìíë¥¼ ë¤ë£¨ë ê¸°ì¤ì "
+        },
+        "en": {
+          "purpose": "A baseline for role-based action visibility, restriction messaging, and read-only states."
+        }
+      },
+      "relatedComponents": [
+        "Button",
+        "Tooltip",
+        "InlineAlert"
+      ]
+    }
+  ],
+  "governance": {
+    "rules": [
+      "docs/rules/current-spec-checklist.md",
+      "docs/rules/implementation-checklist.md",
+      "docs/rules/ì ê·í-íì -ê¸°ì¤.md"
+    ],
+    "issueDirectoryConvention": "docs and work logs are stored under issues/issue-YYYYMMDD-HHMM-summary"
+  },
+  "checks": [
+    {
+      "command": "node tools/sync-publication-bundle.mjs --check",
+      "expected": "publication docs and assets are synchronized into the standalone bundle"
+    },
+    {
+      "command": "node tools/generate-design-system-manifest.mjs --check",
+      "expected": "manifest is current and referenced markdown/json files exist and parse"
+    },
+    {
+      "command": "node tools/extract-design-tokens.mjs --check",
+      "expected": "public token registry is current with light and dark CSS variable sources"
+    },
+    {
+      "command": "node tools/generate-accessibility-coverage.mjs --check",
+      "expected": "accessibility coverage ledger is current for every component in the manifest"
+    },
+    {
+      "command": "node tools/validate-public-design-system.mjs",
+      "expected": "AI entrypoints, token registry, accessibility matrix, and reference screen examples are cross-validated"
+    },
+    {
+      "command": "node tools/generate-agent-starters.mjs --check",
+      "expected": "machine-readable starter prompts are current with manifest and reference screen examples"
+    },
+    {
+      "command": "node tools/sync-component-index.mjs --check",
+      "expected": "source docs and app component registry are synchronized"
+    },
+    {
+      "command": "node tools/sync-pattern-index.mjs --check",
+      "expected": "source pattern docs and app pattern summaries are synchronized across ko/en locale text"
+    },
+    {
+      "command": "node tools/audit-markdown-locales.mjs --check",
+      "expected": "localized Markdown rollout files expose ko/en ds-locale coverage without forcing full-doc migration"
+    },
+    {
+      "command": "node tools/validate-self-contained-publication.mjs",
+      "expected": "all publication links and manifest paths resolve inside the standalone bundle"
+    },
+    {
+      "command": "node tools/audit-public-references.mjs --check --json",
+      "expected": "tracked public references resolve with no missing source targets"
+    },
+    {
+      "command": "node --check app.js",
+      "expected": "publication JavaScript parses successfully"
+    }
+  ],
+  "guardrails": [
+    "Read parent composition before child family documents.",
+    "Do not let parent composition override child component recipe.",
+    "Do not let foundation documents invent exact component recipes.",
+    "Do not promote local usage, example-only, or draft names to canonical truth.",
+    "Do not invent missing token values or product-specific data semantics.",
+    "Include default, loading, empty, error, disabled, permission, and selected/current states when relevant.",
+    "Prefer semantic tokens and document literal fallback only when the source document provides it."
+  ],
+  "aiConsumption": {
+    "stableInputs": [
+      "design-system.manifest.json",
+      "docs/AI-AGENT-GUIDE.md",
+      "docs/components/components.md",
+      "docs/patterns/patterns.md",
+      "docs/patterns/reference-screen-examples.json",
+      "docs/tokens/design-tokens.json",
+      "docs/accessibility/component-accessibility-matrix.json",
+      "docs/accessibility/component-accessibility-coverage.json"
+    ],
+    "requiredOutputs": [
+      "source documents used",
+      "screen intent",
+      "layout composition",
+      "state coverage",
+      "component usage table",
+      "accessibility contract",
+      "content contract",
+      "deferred assumptions"
+    ],
+    "doNotInfer": [
+      "missing product copy",
+      "missing token values",
+      "customer-like data",
+      "undocumented component states",
+      "business logic",
+      "permission policy"
+    ]
+  }
+}

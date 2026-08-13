@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "public-reference-examples",
+  "purpose": "Machine-readable screen composition examples for AI agents. These examples describe composition and states, not final product data.",
+  "examples": [
+    {
+      "pattern": "Dashboard",
+      "source": "docs/patterns/dashboard.md",
+      "screenIntent": "Show operational posture and drill-down entry points.",
+      "regions": [
+        { "name": "shell", "components": ["Page Layout", "GNB", "SNB"] },
+        { "name": "summary", "components": ["Widget Container", "Badge", "ProgressBar"] },
+        { "name": "main grid", "components": ["Widget Container", "Table", "List"] },
+        { "name": "empty fallback", "components": ["Skeleton", "Blankslate", "InlineAlert"] }
+      ],
+      "requiredStates": ["default", "loading", "empty", "partial data unavailable", "permission denied", "refresh failed"],
+      "doNotInfer": ["chart data", "customer metrics", "security event values"]
+    },
+    {
+      "pattern": "List Detail",
+      "source": "docs/patterns/list-detail.md",
+      "screenIntent": "Select an item from a list and inspect details in a side surface.",
+      "regions": [
+        { "name": "list controls", "components": ["Action Bar", "Search", "Filter & Multi Sort"] },
+        { "name": "list body", "components": ["List", "Table", "Card Item", "Tag", "Badge"] },
+        { "name": "detail", "components": ["Drawer Container", "Disclosure", "InlineAlert"] }
+      ],
+      "requiredStates": ["no selection", "selected item", "item loading", "item not found", "permission denied", "save failed"],
+      "doNotInfer": ["detail field order", "business action identity", "permission policy"]
+    },
+    {
+      "pattern": "Settings / Policy Form",
+      "source": "docs/patterns/settings-form.md",
+      "screenIntent": "Edit Sonar settings, policies, accounts, or collection models safely with repeated fieldsets, field-level validation, and save/cancel actions.",
+      "regions": [
+        { "name": "section shell", "components": ["Page Layout", "Section Container"] },
+        { "name": "repeated fieldsets", "components": ["Form Layout", "fieldLabel", "Input", "Select", "Textarea", "Checkbox Group", "Radio Group", "Switch Group"] },
+        { "name": "fieldset validation feedback", "components": ["InlineAlert", "Toast"] },
+        { "name": "actions", "components": ["Button", "buttonGroup"] }
+      ],
+      "requiredStates": ["pristine", "dirty", "repeated fieldsets", "saving", "saved", "field-level error", "screen validation error", "destructive confirmation required"],
+      "doNotInfer": ["policy defaults", "legal copy", "save API behavior"]
+    },
+    {
+      "pattern": "Data Table Workflow",
+      "source": "docs/patterns/data-table-workflow.md",
+      "screenIntent": "Search, filter, sort, inspect, and paginate operational data.",
+      "regions": [
+        { "name": "controls", "components": ["Action Bar", "Search", "Filter & Multi Sort", "Button"] },
+        { "name": "table", "components": ["Table", "Table Cell", "Badge", "Tag", "StatusDot"] },
+        { "name": "pagination", "components": ["Pagination"] },
+        { "name": "fallback", "components": ["Skeleton", "Blankslate", "InlineAlert"] }
+      ],
+      "requiredStates": ["populated", "loading", "no results", "filter no results", "query error", "selected rows", "permission-limited rows"],
+      "doNotInfer": ["row data", "query language", "server-side sort behavior"]
+    },
+    {
+      "pattern": "Audit / Event History",
+      "source": "docs/patterns/audit-timeline.md",
+      "screenIntent": "Read audit logs, ticket history, and automated response history with severity, actor, target, and detail expansion.",
+      "regions": [
+        { "name": "timeline controls", "components": ["Action Bar", "Search", "Filter & Multi Sort"] },
+        { "name": "event list", "components": ["List", "Disclosure", "Badge", "StatusDot", "PriorityIndicator"] },
+        { "name": "event details", "components": ["Table Cell", "InlineMessage", "Tag"] }
+      ],
+      "requiredStates": ["populated timeline", "grouped timeline", "event detail expanded", "no events", "timeline loading", "partial event parse error"],
+      "doNotInfer": ["real event payload", "IP address", "user identity", "security incident facts"]
+    },
+    {
+      "pattern": "Workflow / Guided Setup",
+      "source": "docs/patterns/wizard-flow.md",
+      "screenIntent": "Guide configuration workspaces such as dashboard widget authoring and playbook building with property panels, selectors, canvas or preview, validation, and save actions.",
+      "regions": [
+        { "name": "properties panel", "components": ["Form Layout", "Input", "Select"] },
+        { "name": "selection panel", "components": ["Tree Panel Composition", "Select", "Button"] },
+        { "name": "canvas or preview workspace", "components": ["Page Layout", "Blankslate", "Widget Container"] },
+        { "name": "toolbar and save actions", "components": ["Action Bar", "Button", "iconButtonGroup"] }
+      ],
+      "requiredStates": ["empty workspace", "target selected", "preview loaded", "validation error", "saving", "save success", "cancel confirmation"],
+      "doNotInfer": ["node graph behavior", "widget query semantics", "save side effect"]
+    },
+    {
+      "pattern": "UX Bulk Action",
+      "source": "docs/patterns/ux-baseline/bulk-action.md",
+      "screenIntent": "Execute the same action across selected items while preserving selection scope and partial failure feedback.",
+      "regions": [
+        { "name": "selection context", "components": ["Table", "Checkbox", "Badge"] },
+        { "name": "bulk controls", "components": ["Action Bar", "Button", "buttonGroup"] },
+        { "name": "bulk feedback", "components": ["InlineAlert", "Toast", "StatusDot"] }
+      ],
+      "requiredStates": ["idle", "selection active", "loading", "partial success", "success", "error", "permission denied"],
+      "doNotInfer": ["bulk target semantics", "partial failure policy", "permission execution scope"]
+    },
+    {
+      "pattern": "UX Destructive Action",
+      "source": "docs/patterns/ux-baseline/destructive-action.md",
+      "screenIntent": "Separate destructive intent from execution with confirmation, cancellation, and recoverable feedback.",
+      "regions": [
+        { "name": "destructive entry", "components": ["Button", "InlineAlert"] },
+        { "name": "confirmation", "components": ["Modal", "buttonGroup"] },
+        { "name": "result feedback", "components": ["Toast", "InlineAlert"] }
+      ],
+      "requiredStates": ["idle", "confirming", "loading", "success", "error", "permission denied", "cancelled"],
+      "doNotInfer": ["deletion impact", "recovery policy", "approval workflow"]
+    },
+    {
+      "pattern": "UX Loading Feedback",
+      "source": "docs/patterns/ux-baseline/loading-feedback.md",
+      "screenIntent": "Show that the system is working, block duplicate execution when needed, and transition to success, error, or empty states.",
+      "regions": [
+        { "name": "feedback area", "components": ["Skeleton", "ProgressBar", "InlineAlert"] },
+        { "name": "result surface", "components": ["Table", "Blankslate"] },
+        { "name": "action group", "components": ["Button", "Toast"] }
+      ],
+      "requiredStates": ["first loading", "refresh loading", "long loading", "success", "error", "empty", "stale content guarded"],
+      "doNotInfer": ["processing duration", "failure cause", "retry side effect"]
+    },
+    {
+      "pattern": "UX Optimistic Update",
+      "source": "docs/patterns/ux-baseline/optimistic-update.md",
+      "screenIntent": "Reflect lightweight updates immediately while preserving background confirmation and rollback paths.",
+      "regions": [
+        { "name": "interactive value", "components": ["Switch", "Checkbox", "StatusDot"] },
+        { "name": "background feedback", "components": ["InlineAlert", "Toast"] },
+        { "name": "result surface", "components": ["Table Cell", "Badge"] }
+      ],
+      "requiredStates": ["idle", "optimistic", "background loading", "success", "rollback", "error", "conflict"],
+      "doNotInfer": ["server confirmation timing", "rollback availability", "conflict resolution policy"]
+    },
+    {
+      "pattern": "UX Form Submission",
+      "source": "docs/patterns/ux-baseline/form-submission.md",
+      "screenIntent": "Connect input, validation, submit eligibility, processing, and final feedback in one form flow.",
+      "regions": [
+        { "name": "input area", "components": ["Form Layout", "Input", "Select", "Textarea"] },
+        { "name": "validation feedback", "components": ["fieldLabel", "InlineAlert"] },
+        { "name": "actions", "components": ["Button", "buttonGroup", "Toast"] }
+      ],
+      "requiredStates": ["idle", "dirty", "disabled", "loading", "field error", "screen error", "success"],
+      "doNotInfer": ["default policy values", "server validation rule", "save API behavior"]
+    },
+    {
+      "pattern": "UX Inline Editing",
+      "source": "docs/patterns/ux-baseline/inline-editing.md",
+      "screenIntent": "Edit a value in place while keeping read, editing, commit, cancel, and failure recovery states explicit.",
+      "regions": [
+        { "name": "read state", "components": ["Table Cell", "Button"] },
+        { "name": "editing state", "components": ["Input", "buttonGroup"] },
+        { "name": "commit feedback", "components": ["InlineMessage", "Toast"] }
+      ],
+      "requiredStates": ["idle", "editing", "dirty", "loading", "success", "error", "conflict"],
+      "doNotInfer": ["autosave behavior", "conflict resolution", "field validation rule"]
+    },
+    {
+      "pattern": "UX Hierarchical Navigation",
+      "source": "docs/patterns/ux-baseline/hierarchical-navigation.md",
+      "screenIntent": "Preserve current location, parent path, and deeper navigation routes in hierarchical product information architecture.",
+      "regions": [
+        { "name": "global context", "components": ["GNB", "SNB"] },
+        { "name": "location indicator", "components": ["breadcrumb", "tabNav"] },
+        { "name": "nested navigation", "components": ["Disclosure", "List"] }
+      ],
+      "requiredStates": ["idle", "current", "expanded", "collapsed", "deep path", "not found", "permission limited"],
+      "doNotInfer": ["product IA", "menu permission policy", "default landing route"]
+    },
+    {
+      "pattern": "UX Empty State Recovery",
+      "source": "docs/patterns/ux-baseline/empty-state-recovery.md",
+      "screenIntent": "Turn empty results into explanation and next action instead of a dead end.",
+      "regions": [
+        { "name": "result surface", "components": ["Blankslate", "Search"] },
+        { "name": "recovery actions", "components": ["Button", "Action Bar"] },
+        { "name": "explanation", "components": ["InlineAlert", "Tag"] }
+      ],
+      "requiredStates": ["initial empty", "search no results", "filter no results", "permission empty", "recoverable empty", "retry available"],
+      "doNotInfer": ["empty cause", "creation permission", "support contact copy"]
+    },
+    {
+      "pattern": "UX Permission Based UI",
+      "source": "docs/patterns/ux-baseline/permission-based-ui.md",
+      "screenIntent": "Represent allowed, restricted, hidden, disabled, and read-only behavior without inventing permission policy.",
+      "regions": [
+        { "name": "allowed actions", "components": ["Button", "Action Bar"] },
+        { "name": "restricted feedback", "components": ["Tooltip", "InlineAlert", "Badge"] },
+        { "name": "permission fallback", "components": ["Blankslate", "Toast"] }
+      ],
+      "requiredStates": ["allowed", "disabled", "hidden", "permission denied", "read only", "request access deferred"],
+      "doNotInfer": ["permission policy", "role names", "hide versus disable rule"]
+    }
+  ]
+}

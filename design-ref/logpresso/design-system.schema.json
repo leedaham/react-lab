@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://logpresso.design/design-system.schema.json",
+  "title": "Logpresso Design System Manifest",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "name",
+    "version",
+    "purpose",
+    "runtime",
+    "entrypoints",
+    "counts",
+    "readingOrder",
+    "components",
+    "foundations",
+    "patterns",
+    "governance",
+    "checks",
+    "guardrails",
+    "aiConsumption"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "purpose": { "type": "string" },
+    "runtime": {
+      "type": "object",
+      "required": [
+        "defaultLocale",
+        "supportedLocales",
+        "defaultFramework",
+        "supportedFrameworks",
+        "defaultTheme",
+        "versioningPolicy",
+        "localePolicy"
+      ],
+      "properties": {
+        "defaultLocale": { "type": "string" },
+        "supportedLocales": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "defaultFramework": { "type": "string" },
+        "supportedFrameworks": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "defaultTheme": { "type": "string" },
+        "versioningPolicy": { "type": "string" },
+        "localePolicy": { "type": "string" }
+      }
+    },
+    "entrypoints": {
+      "type": "object",
+      "required": [
+        "webCatalog",
+        "manifest",
+        "manifestSchema",
+        "aiAgentGuide",
+        "componentIndex",
+        "patternIndex",
+        "tokenRegistry",
+        "accessibilityMatrix",
+        "accessibilityCoverage",
+        "referenceScreenExamples",
+        "agentStarterPack",
+        "outputTemplate",
+        "readinessReport",
+        "publicationPolicy"
+      ],
+      "additionalProperties": { "type": "string" }
+    },
+    "counts": {
+      "type": "object",
+      "required": ["components", "foundations", "patterns", "governanceRules"],
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "readingOrder": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "components": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/component" }
+    },
+    "foundations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/foundation" }
+    },
+    "patterns": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/pattern" }
+    },
+    "governance": { "type": "object" },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["command", "expected"],
+        "properties": {
+          "command": { "type": "string" },
+          "expected": { "type": "string" }
+        }
+      }
+    },
+    "guardrails": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "aiConsumption": {
+      "type": "object",
+      "required": ["stableInputs", "requiredOutputs", "doNotInfer"],
+      "properties": {
+        "stableInputs": { "type": "array", "items": { "type": "string" } },
+        "requiredOutputs": { "type": "array", "items": { "type": "string" } },
+        "doNotInfer": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "$defs": {
+    "component": {
+      "type": "object",
+      "required": ["name", "category", "sourceCategory", "status", "path", "note", "compositionHints", "foundationHints", "relatedPatterns"],
+      "properties": {
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "sourceCategory": { "type": "string" },
+        "status": { "type": "string" },
+        "path": { "type": "string" },
+        "note": { "type": "string" },
+        "locales": { "$ref": "#/$defs/localizedMetadata" },
+        "compositionHints": { "type": "array", "items": { "type": "string" } },
+        "foundationHints": { "type": "array", "items": { "type": "string" } },
+        "relatedPatterns": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "foundation": {
+      "type": "object",
+      "required": ["name", "category", "status", "path", "note"],
+      "properties": {
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "status": { "type": "string" },
+        "path": { "type": "string" },
+        "note": { "type": "string" },
+        "locales": { "$ref": "#/$defs/localizedMetadata" }
+      }
+    },
+    "pattern": {
+      "type": "object",
+      "required": ["name", "path", "purpose", "relatedComponents"],
+      "properties": {
+        "name": { "type": "string" },
+        "path": { "type": "string" },
+        "purpose": { "type": "string" },
+        "locales": { "$ref": "#/$defs/localizedMetadata" },
+        "relatedComponents": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "localizedMetadata": {
+      "type": "object",
+      "properties": {
+        "ko": { "type": ["object", "null"], "additionalProperties": { "type": "string" } },
+        "en": { "type": ["object", "null"], "additionalProperties": { "type": "string" } }
+      }
+    }
+  }
+}

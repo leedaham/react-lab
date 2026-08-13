@@ -1,0 +1,475 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "baseline-public-matrix",
+  "source": [
+    "docs/foundation/accessibility.md",
+    "docs/foundation/state.md",
+    "docs/components/components.md"
+  ],
+  "globalRequirements": [
+    "interactive controls are keyboard reachable",
+    "interactive controls have accessible names",
+    "icon-only controls provide aria-label or equivalent accessible name",
+    "focus-visible is not removed",
+    "color is not the only status indicator",
+    "selected, active, current, checked, pressed, expanded are not interchangeable"
+  ],
+  "componentBaselines": [
+    {
+      "component": "Button",
+      "roleExpectation": "button",
+      "keyboard": ["Enter", "Space"],
+      "requiredStates": ["default", "hover", "pressed", "focus-visible", "disabled", "loading"],
+      "notes": "Button.md owns exact visual state recipe."
+    },
+    {
+      "component": "iconButton",
+      "roleExpectation": "button",
+      "keyboard": ["Enter", "Space"],
+      "requiredStates": ["default", "hover", "pressed", "focus-visible", "disabled"],
+      "notes": "Icon-only usage requires accessible name."
+    },
+    {
+      "component": "Input",
+      "roleExpectation": "textbox",
+      "keyboard": ["text entry", "Tab", "Shift+Tab"],
+      "requiredStates": ["default", "focused", "focus-visible", "disabled", "error"],
+      "notes": "Label/helper/error relation must remain explicit."
+    },
+    {
+      "component": "Checkbox",
+      "roleExpectation": "checkbox",
+      "keyboard": ["Space"],
+      "requiredStates": ["unchecked", "checked", "focus-visible", "disabled"],
+      "notes": "Checked is not selected or active."
+    },
+    {
+      "component": "Radio",
+      "roleExpectation": "radio",
+      "keyboard": ["Arrow keys inside group", "Space"],
+      "requiredStates": ["unchecked", "checked", "focus-visible", "disabled"],
+      "notes": "Radio Group owns repeated option relation."
+    },
+    {
+      "component": "Switch",
+      "roleExpectation": "switch",
+      "keyboard": ["Space"],
+      "requiredStates": ["off", "on", "focus-visible", "disabled"],
+      "notes": "On/off is not selected/current."
+    },
+    {
+      "component": "dropdownList",
+      "roleExpectation": "trigger plus listbox/menu depending on usage",
+      "keyboard": ["Enter", "Space", "Escape", "Arrow keys"],
+      "requiredStates": ["collapsed", "expanded", "focus-visible", "disabled"],
+      "notes": "Selection dropdown and command menu semantics must not be mixed."
+    },
+    {
+      "component": "Menu",
+      "roleExpectation": "menu or action list depending on implementation",
+      "keyboard": ["Enter", "Space", "Escape", "Arrow keys"],
+      "requiredStates": ["closed", "open", "focus-visible", "disabled item"],
+      "notes": "Menu is command/action surface, not selection dropdown."
+    },
+    {
+      "component": "Modal",
+      "roleExpectation": "dialog",
+      "keyboard": ["Tab trap", "Escape when dismissible"],
+      "requiredStates": ["open", "closed"],
+      "notes": "Background focus must be blocked and focus must return to trigger."
+    },
+    {
+      "component": "Popover",
+      "roleExpectation": "non-blocking floating panel",
+      "keyboard": ["Tab through focusable content", "Escape when dismissible"],
+      "requiredStates": ["open", "closed", "focus-visible"],
+      "notes": "Popover may include focusable content; Tooltip must not."
+    },
+    {
+      "component": "Tooltip",
+      "roleExpectation": "tooltip",
+      "keyboard": ["shown from hover or focus"],
+      "requiredStates": ["hidden", "visible"],
+      "notes": "Tooltip cannot contain focusable content."
+    },
+    {
+      "component": "Table",
+      "roleExpectation": "table/grid depending on interaction",
+      "keyboard": ["Tab to controls", "row/cell navigation only if interactive grid"],
+      "requiredStates": ["default", "loading", "empty", "error", "selected rows when selectable"],
+      "notes": "Table owns column/row structure; Table Cell owns cell shell."
+    },
+    {
+      "component": "Toast",
+      "roleExpectation": "status or alert depending on severity",
+      "keyboard": ["dismiss action reachable when present"],
+      "requiredStates": ["visible", "dismissed"],
+      "notes": "Toast is summary feedback; complex recovery belongs inline or modal."
+    },
+    {
+      "component": "Blankslate",
+      "roleExpectation": "region or section depending on screen placement",
+      "keyboard": ["primary/secondary actions reachable"],
+      "requiredStates": ["empty", "permission", "error when used as fallback"],
+      "notes": "Content foundation owns wording hierarchy."
+    },
+    {
+      "component": "breadcrumb",
+      "roleExpectation": "navigation with breadcrumb accessible name",
+      "keyboard": ["Tab through links"],
+      "requiredStates": ["current page", "truncated", "overflow"],
+      "notes": "Current location uses aria-current when rendered as a link or current item."
+    },
+    {
+      "component": "tab",
+      "roleExpectation": "tab inside tablist",
+      "keyboard": ["Arrow keys inside tablist", "Home", "End", "Enter or Space when manual activation"],
+      "requiredStates": ["selected", "unselected", "focus-visible", "disabled"],
+      "notes": "Selected tab and current navigation state must not be mixed."
+    },
+    {
+      "component": "tabNav",
+      "roleExpectation": "tablist or navigation depending on destination model",
+      "keyboard": ["Arrow keys for tablist", "Tab through links when navigation"],
+      "requiredStates": ["selected/current", "hover", "focus-visible", "disabled"],
+      "notes": "Use tab semantics only when panels are switched in place."
+    },
+    {
+      "component": "pillTabs",
+      "roleExpectation": "tablist or segmented navigation depending on usage",
+      "keyboard": ["Arrow keys for tablist", "Tab through links when navigation"],
+      "requiredStates": ["selected", "unselected", "focus-visible", "disabled"],
+      "notes": "Direction variant does not change selected/current semantic distinction."
+    },
+    {
+      "component": "DateInput",
+      "roleExpectation": "date textbox or combobox with calendar dialog trigger",
+      "keyboard": ["text entry", "Tab", "Enter or Space to open calendar when trigger is focused", "Escape to close calendar"],
+      "requiredStates": ["empty", "filled", "focused", "expanded", "disabled", "error"],
+      "notes": "CalendarSurface owns overlay composition; DateInput owns single-date field semantics."
+    },
+    {
+      "component": "DateRangeInput",
+      "roleExpectation": "group containing start and end date fields",
+      "keyboard": ["Tab between fields", "text entry", "Enter or Space to open calendar when trigger is focused", "Escape to close calendar"],
+      "requiredStates": ["empty", "partial", "filled", "focused", "expanded", "disabled", "error"],
+      "notes": "Start and end labels must remain distinguishable to assistive technology."
+    },
+    {
+      "component": "Search",
+      "roleExpectation": "searchbox or textbox inside search landmark/region depending on placement",
+      "keyboard": ["text entry", "Enter to submit when applicable", "Escape to clear when documented"],
+      "requiredStates": ["empty", "filled", "focused", "loading results", "disabled"],
+      "notes": "Search query behavior is product-specific; accessible label must not be only placeholder text."
+    },
+    {
+      "component": "Select",
+      "roleExpectation": "combobox with listbox options or native select depending on implementation",
+      "keyboard": ["Enter or Space to open", "Arrow keys", "Escape", "Enter to commit"],
+      "requiredStates": ["placeholder", "selected value", "expanded", "focus-visible", "disabled", "error"],
+      "notes": "Selection state must be exposed as option selection, not active/current."
+    },
+    {
+      "component": "Textarea",
+      "roleExpectation": "multiline textbox",
+      "keyboard": ["text entry", "Enter for line break", "Tab navigation according to product editing policy"],
+      "requiredStates": ["empty", "filled", "focused", "disabled", "error", "resize/overflow when applicable"],
+      "notes": "Helper/error relation follows Form Layout and content foundation."
+    },
+    {
+      "component": "fieldLabel",
+      "roleExpectation": "label or accessible name provider",
+      "keyboard": ["not interactive"],
+      "requiredStates": ["required", "optional", "disabled relation", "error relation"],
+      "notes": "fieldLabel is not a standalone control; it names another form control."
+    },
+    {
+      "component": "Field Item",
+      "roleExpectation": "group or removable field value row depending on parent context",
+      "keyboard": ["Tab to checkbox/remove action when interactive", "Space to toggle checkbox", "Enter or Space for remove button"],
+      "requiredStates": ["default", "hover", "active", "applied", "disabled+none-data", "highlight", "state7"],
+      "notes": "Field Item exposes child Checkbox and remove button semantics; parent owns field value meaning and data behavior."
+    },
+    {
+      "component": "dropdownCheckboxList",
+      "roleExpectation": "multi-select listbox or menu with checkbox items depending on trigger contract",
+      "keyboard": ["Arrow keys", "Space to toggle", "Enter to commit when applicable", "Escape to close"],
+      "requiredStates": ["unchecked", "checked", "mixed when supported", "focus-visible", "disabled item"],
+      "notes": "Checked is not selected/current; visible check state must have semantic equivalent."
+    },
+    {
+      "component": "dropdownRadioboxList",
+      "roleExpectation": "single-select listbox or radiogroup depending on trigger contract",
+      "keyboard": ["Arrow keys", "Space or Enter to select", "Escape to close"],
+      "requiredStates": ["unchecked", "checked", "focus-visible", "disabled item"],
+      "notes": "Exactly one selected option is expected unless the component document states empty selection is allowed."
+    },
+    {
+      "component": "Divider",
+      "roleExpectation": "separator when semantic, presentation when purely decorative",
+      "keyboard": ["not interactive"],
+      "requiredStates": ["horizontal", "vertical", "decorative"],
+      "notes": "Decorative dividers should not add noise to the accessibility tree."
+    },
+    {
+      "component": "Skeleton",
+      "roleExpectation": "presentation placeholder with loading status handled by parent region",
+      "keyboard": ["not interactive"],
+      "requiredStates": ["loading", "reduced motion", "hidden from assistive tech when redundant"],
+      "notes": "Skeleton preserves layout rhythm; parent region announces loading when needed."
+    },
+    {
+      "component": "Badge",
+      "roleExpectation": "text/status indicator depending on surrounding context",
+      "keyboard": ["not interactive unless wrapped by a control"],
+      "requiredStates": ["neutral", "success", "warning", "danger", "info"],
+      "notes": "Color cannot be the only status signal; label text carries the meaning."
+    },
+    {
+      "component": "Tag",
+      "roleExpectation": "text token, option, or removable button depending on variant",
+      "keyboard": ["Tab to remove action when removable", "Enter", "Space"],
+      "requiredStates": ["default", "selected when selectable", "removable", "focus-visible", "disabled"],
+      "notes": "Trailing remove affordance requires its own accessible name."
+    },
+    {
+      "component": "Table Cell",
+      "roleExpectation": "cell, columnheader, rowheader, or gridcell depending on table model",
+      "keyboard": ["Tab to focusable content", "grid navigation only when parent Table is interactive grid"],
+      "requiredStates": ["default", "focused when interactive", "selected row relation", "sorted header relation"],
+      "notes": "Table Cell owns cell shell, while Table owns row/column interaction model."
+    },
+    {
+      "component": "Data Table Cell",
+      "roleExpectation": "cell, columnheader, rowheader, or gridcell depending on data table model",
+      "keyboard": ["Tab to focusable content", "grid navigation only when parent Data Table is interactive grid"],
+      "requiredStates": ["default", "hover", "active", "editable affordance", "none-data-pending", "add-data"],
+      "notes": "Data Table Cell owns compact dataGrid cell shell; parent Data Table owns row/column interaction and editing transaction."
+    },
+    {
+      "component": "Sheet Table Cell",
+      "roleExpectation": "gridcell or columnheader depending on sheet table model",
+      "keyboard": ["Tab to focusable content", "spreadsheet navigation only when parent Sheet Table defines it"],
+      "requiredStates": ["default", "hover", "drag", "none-data-pending", "add-data", "validation-error"],
+      "notes": "Sheet Table Cell owns sheetsGrid visual cell states; parent Sheet Table owns range selection, drag behavior, and editing commit."
+    },
+    {
+      "component": "InlineAlert",
+      "roleExpectation": "status or alert depending on severity and urgency",
+      "keyboard": ["links/actions reachable when present"],
+      "requiredStates": ["info", "success", "warning", "error", "dismissible when documented"],
+      "notes": "InlineAlert is placed near the affected content and should not duplicate Toast as the only error channel."
+    },
+    {
+      "component": "StatusDot",
+      "roleExpectation": "visual status marker with adjacent text or accessible label",
+      "keyboard": ["not interactive"],
+      "requiredStates": ["neutral", "success", "warning", "danger", "inactive"],
+      "notes": "Dot color alone is insufficient; text or accessible status meaning must be present."
+    },
+    {
+      "component": "PriorityIndicator",
+      "roleExpectation": "visual priority marker with adjacent text or accessible label",
+      "keyboard": ["not interactive"],
+      "requiredStates": ["low", "medium", "high", "critical", "unknown"],
+      "notes": "Dot count/color must not be the only priority signal."
+    },
+    {
+      "component": "ProgressBar",
+      "roleExpectation": "progressbar",
+      "keyboard": ["not interactive unless combined with a control"],
+      "requiredStates": ["determinate", "indeterminate", "complete", "error"],
+      "notes": "Expose value now/min/max for determinate progress when implementation supports it."
+    },
+    {
+      "component": "Slider",
+      "roleExpectation": "slider",
+      "keyboard": ["Arrow keys", "Home", "End", "PageUp", "PageDown when supported"],
+      "requiredStates": ["default", "dragging", "focus-visible", "disabled", "invalid when constrained"],
+      "notes": "Accessible name, value text, min, max, and step must be available."
+    },
+    {
+      "component": "GNB",
+      "roleExpectation": "banner with primary navigation and utility controls",
+      "keyboard": ["Tab through brand/navigation/actions", "Enter or Space for buttons", "Escape to close opened utility overlays"],
+      "requiredStates": ["default", "current route", "utility opened", "focus-visible", "responsive overflow"],
+      "notes": "GNB owns top shell order and focus path; child controls own exact button/menu semantics."
+    },
+    {
+      "component": "SNB",
+      "roleExpectation": "navigation region with expandable item groups",
+      "keyboard": ["Tab through navigation items", "Enter or Space to activate/toggle", "Arrow keys only when implemented as tree"],
+      "requiredStates": ["current item", "expanded", "collapsed", "focus-visible", "disabled item"],
+      "notes": "Current navigation, expanded disclosure, and selected data state must remain separate."
+    },
+    {
+      "component": "Page Layout",
+      "roleExpectation": "page landmarks containing banner, navigation, main, and complementary regions",
+      "keyboard": ["skip link to main content", "logical Tab order by region"],
+      "requiredStates": ["default", "navigation collapsed", "drawer/modal present", "loading main region"],
+      "notes": "Page Layout owns landmark order and region relation, not child component roles."
+    },
+    {
+      "component": "Action Bar",
+      "roleExpectation": "toolbar or action region depending on screen context",
+      "keyboard": ["Tab through controls", "Enter or Space for actions", "Escape to close opened filters/menus"],
+      "requiredStates": ["default", "filtered", "busy", "disabled action", "overflow"],
+      "notes": "Action Bar groups screen actions; individual Search, Button, Filter, and menu controls keep their own semantics."
+    },
+    {
+      "component": "SNBToggle",
+      "roleExpectation": "button controlling side navigation collapsed/expanded state",
+      "keyboard": ["Enter", "Space"],
+      "requiredStates": ["expanded", "collapsed", "focus-visible", "disabled"],
+      "notes": "Expose controlled navigation state with expanded/collapsed semantics when implemented."
+    },
+    {
+      "component": "UserConsole",
+      "roleExpectation": "button or menu trigger for user/tenant utility actions",
+      "keyboard": ["Enter or Space to open", "Escape to close", "Arrow keys inside menu when menu opens"],
+      "requiredStates": ["closed", "open", "focus-visible", "disabled", "active session"],
+      "notes": "Do not expose icon glyph text as the accessible name."
+    },
+    {
+      "component": "tabAdd",
+      "roleExpectation": "tablist accessory or toolbar control for adding/overflowing tabs",
+      "keyboard": ["Tab to add/overflow controls", "Enter", "Space", "Arrow keys stay owned by tablist"],
+      "requiredStates": ["available", "overflow", "disabled", "focus-visible"],
+      "notes": "tabAdd does not own individual tab semantics."
+    },
+    {
+      "component": "Stepper",
+      "roleExpectation": "ordered list or navigation for process steps",
+      "keyboard": ["Tab through actionable steps", "Enter or Space when steps are clickable"],
+      "requiredStates": ["current", "complete", "incomplete", "blocked", "error"],
+      "notes": "Current step should be communicated with text/state, not progress color alone."
+    },
+    {
+      "component": "buttonGroup",
+      "roleExpectation": "group or toolbar containing related buttons",
+      "keyboard": ["Tab through buttons or roving focus when implemented as toolbar"],
+      "requiredStates": ["default", "segmented selected when applicable", "disabled child", "focus-visible"],
+      "notes": "Child Button owns individual button state and accessible name."
+    },
+    {
+      "component": "iconButtonGroup",
+      "roleExpectation": "toolbar or group containing icon buttons",
+      "keyboard": ["Tab or roving focus through icon buttons", "Enter", "Space"],
+      "requiredStates": ["default", "pressed/selected when applicable", "disabled child", "focus-visible"],
+      "notes": "Every icon-only child must have an accessible name."
+    },
+    {
+      "component": "Form Layout",
+      "roleExpectation": "form, fieldset, or grouped field layout depending on scope",
+      "keyboard": ["logical Tab order through labels, controls, messages, actions"],
+      "requiredStates": ["default", "required", "error", "disabled section", "saving"],
+      "notes": "Form Layout owns label/control/message relation and action placement."
+    },
+    {
+      "component": "Checkbox Group",
+      "roleExpectation": "group containing multiple checkboxes",
+      "keyboard": ["Tab through group/controls", "Space to toggle focused checkbox"],
+      "requiredStates": ["none checked", "some checked", "all checked", "focus-visible", "disabled item"],
+      "notes": "Group label must describe the set; child Checkbox owns checked state."
+    },
+    {
+      "component": "Radio Group",
+      "roleExpectation": "radiogroup",
+      "keyboard": ["Arrow keys inside group", "Space to select"],
+      "requiredStates": ["none selected when allowed", "selected", "focus-visible", "disabled item"],
+      "notes": "Only one radio option is selected within a group unless the component document states otherwise."
+    },
+    {
+      "component": "Switch Group",
+      "roleExpectation": "group containing independent switches",
+      "keyboard": ["Tab through switches", "Space to toggle focused switch"],
+      "requiredStates": ["all off", "some on", "all on", "focus-visible", "disabled item"],
+      "notes": "Each switch remains an independent on/off control."
+    },
+    {
+      "component": "List",
+      "roleExpectation": "list/listitem or feed depending on content and interaction",
+      "keyboard": ["Tab to interactive items", "Arrow navigation only when implemented as composite widget"],
+      "requiredStates": ["default", "empty", "loading", "selected item when selectable", "disabled item"],
+      "notes": "List is content structure; menu/dropdown/table semantics must not be substituted."
+    },
+    {
+      "component": "Disclosure",
+      "roleExpectation": "button controlling collapsible region",
+      "keyboard": ["Enter", "Space", "Tab into expanded content", "Escape only when documented"],
+      "requiredStates": ["collapsed", "expanded", "focus-visible", "disabled"],
+      "notes": "Expanded state must be exposed on the trigger and associated with the controlled region."
+    },
+    {
+      "component": "Pagination",
+      "roleExpectation": "navigation region for paged content",
+      "keyboard": ["Tab through page controls", "Enter or Space to activate"],
+      "requiredStates": ["first page", "middle page", "last page", "current page", "disabled prev/next"],
+      "notes": "Current page must be programmatically distinguishable."
+    },
+    {
+      "component": "CalendarSurface",
+      "roleExpectation": "dialog or popover containing calendar grid",
+      "keyboard": ["Arrow keys inside grid", "PageUp/PageDown when supported", "Enter to select", "Escape to close"],
+      "requiredStates": ["open", "closed", "selected date", "today", "disabled date", "range start/end"],
+      "notes": "DateInput/DateRangeInput own trigger/field semantics; CalendarSurface owns overlay/grid composition."
+    },
+    {
+      "component": "Surface Foundation",
+      "roleExpectation": "boundary grammar; consuming component decides final role",
+      "keyboard": ["not interactive by itself"],
+      "requiredStates": ["default surface", "hover/focus container when consuming component is interactive", "disabled relation"],
+      "notes": "Do not assign role from Surface Foundation alone."
+    },
+    {
+      "component": "Section Container",
+      "roleExpectation": "section or region with accessible heading when independently navigable",
+      "keyboard": ["Tab through contained controls in source order"],
+      "requiredStates": ["default", "loading", "empty", "error", "collapsed when documented"],
+      "notes": "Section heading and region label are required when the section is a navigation target."
+    },
+    {
+      "component": "Drawer Container",
+      "roleExpectation": "complementary region or dialog depending on modality",
+      "keyboard": ["Tab through drawer controls", "Escape to close when dismissible", "focus return to trigger"],
+      "requiredStates": ["closed", "open", "loading", "error", "permission denied"],
+      "notes": "Modal drawer blocks background focus; non-modal detail drawer must keep focus order explicit."
+    },
+    {
+      "component": "Card Item",
+      "roleExpectation": "article/listitem or button/link when the whole card is actionable",
+      "keyboard": ["Tab to actionable card or inner controls", "Enter or Space when button-like"],
+      "requiredStates": ["default", "hover", "focus-visible", "selected when selectable", "disabled"],
+      "notes": "Avoid nested conflicting interactive targets."
+    },
+    {
+      "component": "Widget Container",
+      "roleExpectation": "section or region for dashboard module",
+      "keyboard": ["Tab through widget controls", "focus order from header actions to body content"],
+      "requiredStates": ["default", "loading", "empty", "error", "refreshing", "permission denied"],
+      "notes": "Widget title should label the region when the widget is independently navigable."
+    },
+    {
+      "component": "Tree Panel Composition",
+      "roleExpectation": "tree or disclosure list depending on implementation",
+      "keyboard": ["Arrow keys when tree", "Enter or Space to expand/select", "Tab out of tree"],
+      "requiredStates": ["expanded", "collapsed", "selected item", "checked item when checkbox tree", "focus-visible"],
+      "notes": "Do not mix tree selection, checkbox checked state, and current navigation state."
+    },
+    {
+      "component": "Filter & Multi Sort",
+      "roleExpectation": "toolbar plus popover/dialog controls for filters and sort rules",
+      "keyboard": ["Tab through chips and controls", "Enter or Space to open/remove", "Escape to close panels"],
+      "requiredStates": ["no filters", "filters applied", "sort rules applied", "panel open", "invalid filter"],
+      "notes": "Filter chips need readable labels and removable actions need accessible names."
+    },
+    {
+      "component": "InlineMessage",
+      "roleExpectation": "inline status/help text associated with nearby content",
+      "keyboard": ["links/actions reachable when present"],
+      "requiredStates": ["info", "warning", "error", "success", "code/reference"],
+      "notes": "InlineMessage should be associated with the affected control or content region when it explains an error."
+    }
+  ],
+  "coveragePolicy": "All active current components must have explicit baselines. Draft, deprecated/history, and example-only entries are tracked in the coverage ledger but are not current implementation truth."
+}

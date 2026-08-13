@@ -1,0 +1,611 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "public-accessibility-coverage-ledger",
+  "purpose": "Machine-readable coverage ledger so AI agents can see how every component is handled by accessibility guidance.",
+  "source": [
+    "design-system.manifest.json",
+    "docs/accessibility/component-accessibility-matrix.json",
+    "docs/foundation/accessibility.md"
+  ],
+  "counts": {
+    "components": 65,
+    "explicitBaselines": 65,
+    "coverageLevels": {
+      "explicit-baseline": 65
+    }
+  },
+  "rules": [
+    "explicit-baseline entries use the component-accessibility-matrix contract",
+    "composition entries own focus order and region relation, not child primitive roles",
+    "local usage entries cannot be generalized outside the documented parent",
+    "non-current reference entries must not be used as current implementation truth",
+    "coverageLevel is not a replacement for reading the component document"
+  ],
+  "coverage": [
+    {
+      "component": "GNB",
+      "path": "docs/components/GNB.md",
+      "category": "Navigation / Shell",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "SNB",
+      "path": "docs/components/SNB.md",
+      "category": "Navigation / Shell",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Page Layout",
+      "path": "docs/components/Page Layout.md",
+      "category": "Navigation / Shell",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Action Bar",
+      "path": "docs/components/Action Bar.md",
+      "category": "Navigation / Shell",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "SNBToggle",
+      "path": "docs/components/SNBToggle.md",
+      "category": "Navigation / Shell",
+      "status": "local usage",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "UserConsole",
+      "path": "docs/components/UserConsole.md",
+      "category": "Navigation / Shell",
+      "status": "local usage",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "breadcrumb",
+      "path": "docs/components/breadcrumb.md",
+      "category": "Navigation / Shell",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "tab",
+      "path": "docs/components/tab.md",
+      "category": "Navigation / Shell",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "tabNav",
+      "path": "docs/components/tabNav.md",
+      "category": "Navigation / Shell",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "pillTabs",
+      "path": "docs/components/pillTabs.md",
+      "category": "Navigation / Shell",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "tabAdd",
+      "path": "docs/components/tabAdd.md",
+      "category": "Navigation / Shell",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Stepper",
+      "path": "docs/components/Stepper.md",
+      "category": "Navigation / Shell",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Button",
+      "path": "docs/components/Button.md",
+      "category": "Actions",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "iconButton",
+      "path": "docs/components/iconButton.md",
+      "category": "Actions",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "buttonGroup",
+      "path": "docs/components/buttonGroup.md",
+      "category": "Actions",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "iconButtonGroup",
+      "path": "docs/components/iconButtonGroup.md",
+      "category": "Actions",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Input",
+      "path": "docs/components/Input.md",
+      "category": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "DateInput",
+      "path": "docs/components/DateInput.md",
+      "category": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "DateRangeInput",
+      "path": "docs/components/DateRangeInput.md",
+      "category": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Search",
+      "path": "docs/components/Search.md",
+      "category": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Select",
+      "path": "docs/components/Select.md",
+      "category": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Textarea",
+      "path": "docs/components/Textarea.md",
+      "category": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "fieldLabel",
+      "path": "docs/components/fieldLabel.md",
+      "category": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Field Item",
+      "path": "docs/components/Field Item.md",
+      "category": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Form Layout",
+      "path": "docs/components/Form Layout.md",
+      "category": "Inputs / Search / Selection",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Checkbox",
+      "path": "docs/components/Checkbox.md",
+      "category": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Radio",
+      "path": "docs/components/Radio.md",
+      "category": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Switch",
+      "path": "docs/components/Switch.md",
+      "category": "Inputs / Search / Selection",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Checkbox Group",
+      "path": "docs/components/Checkbox Group.md",
+      "category": "Inputs / Search / Selection",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Radio Group",
+      "path": "docs/components/Radio Group.md",
+      "category": "Inputs / Search / Selection",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Switch Group",
+      "path": "docs/components/Switch Group.md",
+      "category": "Inputs / Search / Selection",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "dropdownList",
+      "path": "docs/components/dropdownList.md",
+      "category": "Dropdown / List",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "dropdownCheckboxList",
+      "path": "docs/components/dropdownCheckboxList.md",
+      "category": "Dropdown / List",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "dropdownRadioboxList",
+      "path": "docs/components/dropdownRadioboxList.md",
+      "category": "Dropdown / List",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Menu",
+      "path": "docs/components/Menu.md",
+      "category": "Dropdown / List",
+      "status": "superseded",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "List",
+      "path": "docs/components/List.md",
+      "category": "Dropdown / List",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Divider",
+      "path": "docs/components/Divider.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Modal",
+      "path": "docs/components/Modal.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Popover",
+      "path": "docs/components/Popover.md",
+      "category": "Supporting",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Disclosure",
+      "path": "docs/components/Disclosure.md",
+      "category": "Supporting",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Skeleton",
+      "path": "docs/components/Skeleton.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Badge",
+      "path": "docs/components/Badge.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Tag",
+      "path": "docs/components/Tag.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Pagination",
+      "path": "docs/components/Pagination.md",
+      "category": "Supporting",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Table",
+      "path": "docs/components/Table.md",
+      "category": "Supporting",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Table Cell",
+      "path": "docs/components/Table Cell.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Data Table Cell",
+      "path": "docs/components/Data Table Cell.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Sheet Table Cell",
+      "path": "docs/components/Sheet Table Cell.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Toast",
+      "path": "docs/components/Toast.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "InlineAlert",
+      "path": "docs/components/InlineAlert.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "StatusDot",
+      "path": "docs/components/StatusDot.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "PriorityIndicator",
+      "path": "docs/components/PriorityIndicator.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "ProgressBar",
+      "path": "docs/components/ProgressBar.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Slider",
+      "path": "docs/components/Slider.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Tooltip",
+      "path": "docs/components/Tooltip.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "CalendarSurface",
+      "path": "docs/components/CalendarSurface.md",
+      "category": "Supporting",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Tree Panel Composition",
+      "path": "docs/components/Tree Panel Composition.md",
+      "category": "Supporting",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Filter & Multi Sort",
+      "path": "docs/components/Filter & Multi Sort.md",
+      "category": "Supporting",
+      "status": "local usage",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "InlineMessage",
+      "path": "docs/components/InlineMessage.md",
+      "category": "Supporting",
+      "status": "family canonical",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Blankslate",
+      "path": "docs/components/Blankslate.md",
+      "category": "Supporting",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Surface Foundation",
+      "path": "docs/components/Surface-Foundation.md",
+      "category": "Surface",
+      "status": "supporting boundary",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Card Item",
+      "path": "docs/components/Card-Item.md",
+      "category": "Surface",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Widget Container",
+      "path": "docs/components/Widget-Container.md",
+      "category": "Surface",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Section Container",
+      "path": "docs/components/Section-Container.md",
+      "category": "Surface",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    },
+    {
+      "component": "Drawer Container",
+      "path": "docs/components/Drawer-Container.md",
+      "category": "Surface",
+      "status": "reusable composition pattern",
+      "coverageLevel": "explicit-baseline",
+      "baselineSource": "docs/accessibility/component-accessibility-matrix.json",
+      "requiredAction": "Use the explicit role, keyboard, required state, and note in the baseline matrix."
+    }
+  ]
+}

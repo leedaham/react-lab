@@ -10,8 +10,9 @@ import {Label} from 'react-aria-components/Label';
 import {FieldError} from 'react-aria-components/FieldError';
 import {tv} from 'tailwind-variants';
 import {CalendarLogpresso} from './CalendarLogpresso';
-import {DateInputLogpresso, TimeFieldLogpresso} from './DateInputLogpresso';
+import {DateInputLogpresso} from './DateInputLogpresso';
 import {Popover as AriaPopover} from 'react-aria-components/Popover';
+import {TimeSelectLogpresso} from './TimeSelectLogpresso';
 import {focusRing} from './utils';
 
 export interface DatePickerLogpressoProps
@@ -123,12 +124,12 @@ export function DatePickerLogpresso({
                 className={`mt-2 border-t pt-2 ${
                   theme === 'dark' ? 'border-[#2a3340]' : 'border-[#dce2ea]'
                 }`}>
-                <TimeFieldLogpresso
+                <TimeSelectLogpresso
                   theme={theme}
-                  aria-label="시간"
+                  size={size}
                   value={state.timeValue}
-                  onChange={(time) => time && state.setTimeValue(time)}
-                  granularity="minute"
+                  onChange={(time) => state.setTimeValue(time)}
+                  hourCycle={props.hourCycle ?? 24}
                 />
               </div>
             )}

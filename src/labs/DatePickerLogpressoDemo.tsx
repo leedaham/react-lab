@@ -245,8 +245,8 @@ export default function DatePickerLogpressoDemo() {
           트리거 높이는 Logpresso control height(Small 24px / Medium 30px)를 따르고, 캘린더
           아이콘은 16x16입니다. 열린 캘린더는 CalendarSurface 규칙(accent 원형 선택 pill,
           24x24 셀)을 따르며 overlay 표면은 트리거와 분리해 스타일링했습니다. 시·분은 캘린더
-          아래의 시간 입력 칸에서도 고를 수 있습니다. 우측 상단 버튼으로 라이트/다크 테마를
-          전환할 수 있습니다.
+          아래의 드롭다운에서 선택합니다. 우측 상단 버튼으로 라이트/다크 테마를 전환할 수
+          있습니다.
         </p>
         <PropsInheritance
           chain={datePickerChain}

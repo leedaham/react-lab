@@ -234,9 +234,9 @@ export default function DatePickerDemo() {
           </tbody>
         </table>
         <p className="mt-3 text-sm text-gray-600">
-          시·분이 있는 값을 쓰면 세그먼트로 나뉘어 편집됩니다. 캘린더 팝업에서 날짜를 고르고,
-          팝업 하단의 시·분 칸에서 시간까지 선택할 수 있습니다. 날짜 선택 후에도 팝업이 닫히지
-          않아 시간을 이어서 고를 수 있으며, Tab 키로 세그먼트 사이를 이동할 수 있습니다.
+          시·분이 있는 값을 쓰면 캘린더 팝업 아래에 시·분 드롭다운이 나타납니다. 캘린더에서
+          날짜를 고르고, 시·분 드롭다운에서 시간을 선택합니다. 날짜 선택 후에도 팝업이 닫히지
+          않아 시간을 이어서 고를 수 있습니다.
         </p>
         <PropsInheritance
           chain={datePickerChain}

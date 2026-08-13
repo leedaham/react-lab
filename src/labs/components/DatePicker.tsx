@@ -9,9 +9,10 @@ import {Button} from 'react-aria-components/Button';
 import {Group} from 'react-aria-components/Group';
 import {tv} from 'tailwind-variants';
 import {Calendar} from './Calendar';
-import {DateInput, TimeField} from './DateField';
+import {DateInput} from './DateField';
 import {Description, FieldError, Label} from './Field';
 import {Popover} from './Popover';
+import {TimeSelect} from './TimeSelect';
 import {composeTailwindRenderProps, focusRing} from './utils';
 
 export interface DatePickerProps<T extends DateValue> extends Omit<AriaDatePickerProps<T>, 'children'> {
@@ -51,11 +52,10 @@ export function DatePicker<T extends DateValue>({
             <Calendar />
             {state.hasTime && (
               <div className="mt-2 border-t border-black/10 dark:border-white/10 pt-2">
-                <TimeField
-                  aria-label="시간"
+                <TimeSelect
                   value={state.timeValue}
-                  onChange={(time) => time && state.setTimeValue(time)}
-                  granularity="minute"
+                  onChange={(time) => state.setTimeValue(time)}
+                  hourCycle={props.hourCycle ?? 24}
                 />
               </div>
             )}

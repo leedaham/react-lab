@@ -4,11 +4,6 @@ import {
   type DateInputProps,
   type DateSegmentProps
 } from 'react-aria-components/DateField';
-import {
-  TimeField as RACTimeField,
-  type TimeFieldProps,
-  type TimeValue
-} from 'react-aria-components/TimeField';
 import {composeRenderProps} from 'react-aria-components/composeRenderProps';
 import {tv} from 'tailwind-variants';
 import {focusRing} from './utils';
@@ -61,21 +56,5 @@ export function DateInput(props: Omit<DateInputProps, 'children'>) {
       )}>
       {(segment) => <DateSegment segment={segment} />}
     </RACDateInput>
-  );
-}
-
-const timeFieldStyles = tv({
-  base: 'flex flex-col gap-1'
-});
-
-export function TimeField<T extends TimeValue>(props: TimeFieldProps<T>) {
-  return (
-    <RACTimeField
-      {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        timeFieldStyles({...renderProps, className})
-      )}>
-      <DateInput />
-    </RACTimeField>
   );
 }

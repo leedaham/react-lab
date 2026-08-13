@@ -4,11 +4,6 @@ import {
   type DateInputProps,
   type DateSegmentProps
 } from 'react-aria-components/DateField';
-import {
-  TimeField as RACTimeField,
-  type TimeFieldProps,
-  type TimeValue
-} from 'react-aria-components/TimeField';
 import {composeRenderProps} from 'react-aria-components/composeRenderProps';
 import {tv} from 'tailwind-variants';
 
@@ -194,21 +189,5 @@ export function DateInputLogpresso({size = 'medium', theme = 'dark', ...props}: 
       )}>
       {(segment) => <DateSegmentLogpresso theme={theme} segment={segment} />}
     </RACDateInput>
-  );
-}
-
-export interface TimeFieldLogpressoProps<T extends TimeValue> extends TimeFieldProps<T> {
-  /** @default 'dark' */
-  theme?: 'dark' | 'light';
-}
-
-export function TimeFieldLogpresso<T extends TimeValue>({
-  theme = 'dark',
-  ...props
-}: TimeFieldLogpressoProps<T>) {
-  return (
-    <RACTimeField {...props}>
-      <DateInputLogpresso theme={theme} />
-    </RACTimeField>
   );
 }

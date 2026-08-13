@@ -12,6 +12,8 @@ export interface DateInputLogpressoProps extends Omit<DateInputProps, 'children'
   size?: 'small' | 'medium';
   /** @default 'dark' */
   theme?: 'dark' | 'light';
+  /** 표면(테두리/배경) 없이 세그먼트만 렌더링 (DatePicker 안에서 Group이 표면 담당 시 사용) @default true */
+  bordered?: boolean;
 }
 
 const segmentStyles = tv({
@@ -85,11 +87,15 @@ export function DateSegmentLogpresso({
 }
 
 const inputStyles = tv({
-  base: 'inline-flex items-center overflow-hidden rounded-lg border transition outline-none [-webkit-tap-highlight-color:transparent]',
+  base: 'inline-flex items-center overflow-hidden rounded-lg transition outline-none [-webkit-tap-highlight-color:transparent]',
   variants: {
     size: {
       small: 'h-6 text-xs leading-4',
       medium: 'h-[30px] text-sm leading-5'
+    },
+    bordered: {
+      true: '',
+      false: 'bg-transparent'
     },
     isFocusWithin: {
       true: '',
@@ -115,13 +121,15 @@ const inputStyles = tv({
   compoundVariants: [
     {
       theme: 'dark',
+      bordered: true,
       isFocusWithin: false,
       isDisabled: false,
       isInvalid: false,
-      className: 'border-[#2a3340] bg-[#0e1322]'
+      className: 'border border-[#2a3340] bg-[#0e1322]'
     },
     {
       theme: 'dark',
+      bordered: true,
       isHovered: true,
       isDisabled: false,
       isInvalid: false,
@@ -129,6 +137,7 @@ const inputStyles = tv({
     },
     {
       theme: 'dark',
+      bordered: true,
       isFocusWithin: true,
       isDisabled: false,
       isInvalid: false,
@@ -136,24 +145,28 @@ const inputStyles = tv({
     },
     {
       theme: 'dark',
+      bordered: true,
       isInvalid: true,
       isDisabled: false,
       className: 'border-[#ff454d] bg-[#0e1322]'
     },
     {
       theme: 'dark',
+      bordered: true,
       isDisabled: true,
       className: 'border-[#2a3340] bg-[#111720]'
     },
     {
       theme: 'light',
+      bordered: true,
       isFocusWithin: false,
       isDisabled: false,
       isInvalid: false,
-      className: 'border-[#dce2ea] bg-white'
+      className: 'border border-[#dce2ea] bg-white'
     },
     {
       theme: 'light',
+      bordered: true,
       isHovered: true,
       isDisabled: false,
       isInvalid: false,
@@ -161,6 +174,7 @@ const inputStyles = tv({
     },
     {
       theme: 'light',
+      bordered: true,
       isFocusWithin: true,
       isDisabled: false,
       isInvalid: false,
@@ -168,24 +182,26 @@ const inputStyles = tv({
     },
     {
       theme: 'light',
+      bordered: true,
       isInvalid: true,
       isDisabled: false,
       className: 'border-[#d50000] bg-white'
     },
     {
       theme: 'light',
+      bordered: true,
       isDisabled: true,
       className: 'border-[#dce2ea] bg-[#f1f3f7]'
     }
   ]
 });
 
-export function DateInputLogpresso({size = 'medium', theme = 'dark', ...props}: DateInputLogpressoProps) {
+export function DateInputLogpresso({size = 'medium', theme = 'dark', bordered = true, ...props}: DateInputLogpressoProps) {
   return (
     <RACDateInput
       {...props}
       className={composeRenderProps(props.className, (className, renderProps) =>
-        inputStyles({...renderProps, size, theme, className})
+        inputStyles({...renderProps, size, theme, bordered, className})
       )}>
       {(segment) => <DateSegmentLogpresso theme={theme} segment={segment} />}
     </RACDateInput>

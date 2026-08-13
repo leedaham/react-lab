@@ -47,6 +47,102 @@ const buttonStyles = tv({
   ]
 });
 
+const groupStyles = tv({
+  base: 'flex items-center gap-1 overflow-hidden rounded-lg pr-1.5 transition outline-none [-webkit-tap-highlight-color:transparent]',
+  variants: {
+    size: {
+      small: 'h-6 pl-1.5',
+      medium: 'h-[30px] pl-2'
+    },
+    theme: {
+      dark: '',
+      light: ''
+    },
+    isHovered: {
+      true: '',
+      false: ''
+    },
+    isFocusWithin: {
+      true: '',
+      false: ''
+    },
+    isDisabled: {
+      true: '',
+      false: ''
+    },
+    isInvalid: {
+      true: '',
+      false: ''
+    }
+  },
+  compoundVariants: [
+    {
+      theme: 'dark',
+      isFocusWithin: false,
+      isDisabled: false,
+      isInvalid: false,
+      className: 'border border-[#2a3340] bg-[#0e1322]'
+    },
+    {
+      theme: 'dark',
+      isHovered: true,
+      isDisabled: false,
+      isInvalid: false,
+      className: 'border-[#3a4554] bg-[#151c33]'
+    },
+    {
+      theme: 'dark',
+      isFocusWithin: true,
+      isDisabled: false,
+      isInvalid: false,
+      className: 'border-[#4c8dff] bg-[#0e1322]'
+    },
+    {
+      theme: 'dark',
+      isInvalid: true,
+      isDisabled: false,
+      className: 'border-[#ff454d] bg-[#0e1322]'
+    },
+    {
+      theme: 'dark',
+      isDisabled: true,
+      className: 'border-[#2a3340] bg-[#111720]'
+    },
+    {
+      theme: 'light',
+      isFocusWithin: false,
+      isDisabled: false,
+      isInvalid: false,
+      className: 'border border-[#dce2ea] bg-white'
+    },
+    {
+      theme: 'light',
+      isHovered: true,
+      isDisabled: false,
+      isInvalid: false,
+      className: 'border-[#c7d0dd] bg-[#f1f3f7]'
+    },
+    {
+      theme: 'light',
+      isFocusWithin: true,
+      isDisabled: false,
+      isInvalid: false,
+      className: 'border-[#2563eb] bg-white'
+    },
+    {
+      theme: 'light',
+      isInvalid: true,
+      isDisabled: false,
+      className: 'border-[#d50000] bg-white'
+    },
+    {
+      theme: 'light',
+      isDisabled: true,
+      className: 'border-[#dce2ea] bg-[#f1f3f7]'
+    }
+  ]
+});
+
 function CalendarButton({
   theme,
   size
@@ -90,10 +186,10 @@ export function DatePickerLogpresso({
               </Label>
             )}
             <Group
-              className={`flex items-center overflow-hidden rounded-lg border pr-1.5 transition ${
-                size === 'small' ? 'h-6 pl-1.5' : 'h-[30px] pl-2'
-              } ${theme === 'dark' ? 'gap-1' : 'gap-1'}`}>
-              <DateInputLogpresso size={size} theme={theme} className="flex-1" />
+              className={(renderProps) =>
+                groupStyles({...renderProps, size, theme})
+              }>
+              <DateInputLogpresso size={size} theme={theme} bordered={false} className="flex-1" />
               <CalendarButton theme={theme} size={size} />
             </Group>
             {description && (
@@ -120,10 +216,7 @@ export function DatePickerLogpresso({
             }`}>
             <CalendarLogpresso theme={theme} />
             {state.hasTime && (
-              <div
-                className={`mt-2 border-t pt-2 ${
-                  theme === 'dark' ? 'border-[#2a3340]' : 'border-[#dce2ea]'
-                }`}>
+              <div className="mt-2">
                 <TimeSelectLogpresso
                   theme={theme}
                   size={size}

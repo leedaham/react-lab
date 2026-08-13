@@ -16,13 +16,13 @@ import {composeRenderProps} from 'react-aria-components/composeRenderProps';
 import {tv} from 'tailwind-variants';
 import {focusRing} from './utils';
 
-export interface LogpressoSelectOption {
+export interface SelectLogpressoOption {
   id: string;
   name: string;
 }
 
-export interface LogpressoSelectProps extends Omit<
-  AriaSelectProps<LogpressoSelectOption>,
+export interface SelectLogpressoProps extends Omit<
+  AriaSelectProps<SelectLogpressoOption>,
   'children' | 'items' | 'label' | 'description' | 'errorMessage'
 > {
   /** @default 'dark' */
@@ -30,9 +30,9 @@ export interface LogpressoSelectProps extends Omit<
   /** @default 'medium' */
   size?: 'small' | 'medium';
   label?: string;
-  items: LogpressoSelectOption[];
+  items: SelectLogpressoOption[];
   errorMessage?: string;
-  /** 로딩 스피너 표시 (LogpressoSelect 전용) */
+  /** 로딩 스피너 표시 (SelectLogpresso 전용) */
   isPending?: boolean;
 }
 
@@ -271,7 +271,7 @@ function SelectPopover({theme, children}: {theme: 'dark' | 'light'; children: Re
   );
 }
 
-export function LogpressoSelect({
+export function SelectLogpresso({
   theme = 'dark',
   size = 'medium',
   label,
@@ -279,7 +279,7 @@ export function LogpressoSelect({
   items,
   errorMessage,
   ...props
-}: LogpressoSelectProps) {
+}: SelectLogpressoProps) {
   return (
     <AriaSelect
       {...props}
@@ -297,7 +297,7 @@ export function LogpressoSelect({
         <ListBox
           items={items}
           className="max-h-[inherit] overflow-auto p-1 outline-hidden [clip-path:inset(0_0_0_0_round_.75rem)]">
-          {(item: LogpressoSelectOption) => (
+          {(item: SelectLogpressoOption) => (
             <SelectItem theme={theme} id={item.id}>
               {item.name}
             </SelectItem>

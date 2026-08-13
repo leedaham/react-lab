@@ -16,7 +16,7 @@
    - `ExampleCard.tsx`(인사말 카드)는 항상 목록 맨 위에 배치된다(index.tsx의 정렬 규칙).
 2. **절대 손대지 말 것**: `src/labs/index.tsx`(자동 감지), `src/main.tsx`, `src/App.tsx`, `src/style.css`(Tailwind 진입점), `vite.config.js`(Tailwind Vite 플러그인 설정), `package.json`(의존성 제외)은 임의로 수정하지 않는다.
 3. **컴포넌트는 `src/labs/components/` 에 둔다**:
-   - `components/` 아래 파일은 `default export`가 없어 목록에 노출되지 않는다. 재사용 컴포넌트(`Button`, `LogpressoButton`, `Select`, `LogpressoSelect` 등)만 `components/`에 만든다.
+   - `components/` 아래 파일은 `default export`가 없어 목록에 노출되지 않는다. 재사용 컴포넌트(`Button`, `ButtonLogpresso`, `Select`, `SelectLogpresso` 등)만 `components/`에 만든다.
    - 데모 파일은 `./components/*` 를 `import` 해서 화면에 표시한다. 사용자는 `components/`에서 컴포넌트를 꺼내 쓰고, 데모를 사용 예시로 참고한다.
    - `components/` 내부 파일끼리의 `import`는 허용한다: `utils.ts`(스타일 프리미티브: `focusRing`, `composeTailwindRenderProps`)와 RAC 번들 서포트 파일(`Field.tsx`, `ListBox.tsx`, `Popover.tsx`)을 공용 `import`할 수 있다.
 4. **외부 데이터/네트워크 금지**: API 호출, 이미지 URL 등 외부 의존성은 기본적으로 사용하지 않는다. 꼭 필요하면 에이전트가 샘플 데이터를 하드코딩한다.
@@ -45,6 +45,7 @@
   }
   ```
 - **사용 방법 섹션**: 데모 파일에는 컴포넌트 사용 예시(`<pre><code>` 블록)와 주요 props 표(이름·설명·기본값)를 포함한다. 사용자가 `components/`에서 꺼내 쓰는 법을 참고할 수 있게 한다.
+- **테마 토글 (Logpresso 데모)**: Logpresso 스타일 데모(`*Logpresso*Demo.tsx`)에는 우측 상단에 **라이트/다크 모드 토글**이 항상 있어야 한다. 데모 배경·텍스트·표 색상이 테마에 따라 바뀌고, 컴포넌트에는 `theme` prop(`dark`/`light`)을 전달한다. `SelectLogpressoDemo.tsx`/`ButtonLogpressoDemo.tsx`를 참고한다.
 - **상속 문서**: RAC props를 상속받는 컴포넌트의 데모에는 `PropsInheritance`(`components/PropsInheritance.tsx`)로 상속 체인·그룹별 상속 props·공식 문서 링크를 표시한다. 상속 데이터는 데모 파일 안에 하드코딩한다.
 - **props 사용 금지 (데모만)**: `export default` 데모는 화면 목록에서 클릭해 띄우는 구조이므로 props를 받지 않는다. `components/`의 재사용 컴포넌트는 props를 받는다.
 - **타입 작성**: 샘플 데이터는 타입을 명확히 한다. 컴포넌트에 필요한 타입은 해당 파일 안에 직접 선언한다.

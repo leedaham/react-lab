@@ -1,8 +1,8 @@
 import {useState} from 'react';
-import {LogpressoSelect, type LogpressoSelectOption} from './components/LogpressoSelect';
+import {SelectLogpresso, type SelectLogpressoOption} from './components/SelectLogpresso';
 import {PropsInheritance} from './components/PropsInheritance';
 
-const usageCode = `import { LogpressoSelect } from './components/LogpressoSelect';
+const usageCode = `import { SelectLogpresso } from './components/SelectLogpresso';
 
 const items = [
   {id: 'kr', name: '대한민국'},
@@ -12,7 +12,7 @@ const items = [
 
 const [selected, setSelected] = useState<string>();
 
-<LogpressoSelect
+<SelectLogpresso
   theme="dark"
   size="medium"
   label="국가"
@@ -24,7 +24,7 @@ const [selected, setSelected] = useState<string>();
 />`;
 
 const selectChain = [
-  {name: 'LogpressoSelect (Lab)'},
+  {name: 'SelectLogpresso (Lab)'},
   {name: 'RAC SelectProps'},
   {name: 'AriaSelectProps'},
   {name: 'react-stately SelectProps'}
@@ -89,7 +89,7 @@ const selectGroups = [
   }
 ];
 
-const countries: LogpressoSelectOption[] = [
+const countries: SelectLogpressoOption[] = [
   {id: 'kr', name: '대한민국'},
   {id: 'us', name: '미국'},
   {id: 'jp', name: '일본'},
@@ -97,7 +97,7 @@ const countries: LogpressoSelectOption[] = [
   {id: 'de', name: '독일'}
 ];
 
-const severities: LogpressoSelectOption[] = [
+const severities: SelectLogpressoOption[] = [
   {id: 'critical', name: 'Critical'},
   {id: 'high', name: 'High'},
   {id: 'medium', name: 'Medium'},
@@ -115,7 +115,7 @@ export default function SelectLogpressoDemo() {
     <div className={`flex flex-col gap-8 p-6 font-sans ${isDark ? 'bg-[#0b0f15]' : 'bg-white'}`}>
       <div className="flex items-center justify-between">
         <h1 className={`text-sm font-medium ${isDark ? 'text-[#ebebeb]' : 'text-[#111827]'}`}>
-          Logpresso Select
+          Select Logpresso
         </h1>
         <button
           type="button"
@@ -134,7 +134,7 @@ export default function SelectLogpressoDemo() {
           기본 / Placeholder
         </h2>
         <div className="max-w-[220px]">
-          <LogpressoSelect
+          <SelectLogpresso
             theme={theme}
             size="medium"
             placeholder="국가를 선택하세요"
@@ -155,7 +155,7 @@ export default function SelectLogpressoDemo() {
           라벨 포함 / 기본 선택값
         </h2>
         <div className="max-w-[220px]">
-          <LogpressoSelect
+          <SelectLogpresso
             theme={theme}
             size="medium"
             label="심각도"
@@ -172,7 +172,7 @@ export default function SelectLogpressoDemo() {
         </h2>
         <div className="flex flex-wrap items-end gap-4">
           <div className="w-[180px]">
-            <LogpressoSelect
+            <SelectLogpresso
               theme={theme}
               size="small"
               label="Small"
@@ -181,7 +181,7 @@ export default function SelectLogpressoDemo() {
             />
           </div>
           <div className="w-[180px]">
-            <LogpressoSelect
+            <SelectLogpresso
               theme={theme}
               size="medium"
               label="비활성"
@@ -191,7 +191,7 @@ export default function SelectLogpressoDemo() {
             />
           </div>
           <div className="w-[180px]">
-            <LogpressoSelect
+            <SelectLogpresso
               theme={theme}
               size="medium"
               label="오류"
@@ -208,7 +208,7 @@ export default function SelectLogpressoDemo() {
           로딩 표시
         </h2>
         <div className="w-[220px]">
-          <LogpressoSelect
+          <SelectLogpresso
             theme={theme}
             size="medium"
             label="조회 상태"

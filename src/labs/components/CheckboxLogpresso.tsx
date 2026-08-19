@@ -9,12 +9,11 @@ import {
 import {composeRenderProps} from 'react-aria-components/composeRenderProps';
 import {tv} from 'tailwind-variants';
 import {Description, FieldError} from './Field';
+import {useLogpressoTheme} from './utils';
 
 export interface CheckboxLogpressoProps extends Omit<CheckboxFieldProps, 'children'> {
   /** @default 'md' */
   size?: 'md' | 'sm' | 'xs';
-  /** @default 'dark' */
-  theme?: 'dark' | 'light';
   children?: React.ReactNode;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
@@ -151,13 +150,13 @@ const iconStyles = tv({
 
 export function CheckboxLogpresso({
   size = 'md',
-  theme = 'dark',
   children,
   description,
   errorMessage,
   className,
   ...props
 }: CheckboxLogpressoProps) {
+  const theme = useLogpressoTheme();
   return (
     <CheckboxField {...props} className="group flex flex-col gap-1">
       <CheckboxButton

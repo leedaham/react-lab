@@ -24,12 +24,10 @@ import {composeRenderProps} from 'react-aria-components/composeRenderProps';
 import {tv} from 'tailwind-variants';
 import {DateInputLogpresso} from './DateInputLogpresso';
 import {CalendarSurfacePreset, RANGE_DEFAULT_PRESETS} from './DatePickerLogpressoCalendarSurface';
-import {focusRing} from './utils';
+import {focusRing, useLogpressoTheme} from './utils';
 
 export interface DateRangePickerLogpressoCalendarSurfaceProps
   extends Omit<AriaDateRangePickerProps<DateValue>, 'children' | 'label'> {
-  /** @default 'dark' */
-  theme?: 'dark' | 'light';
   /** @default 'medium' */
   size?: 'small' | 'medium';
   label?: string;
@@ -543,7 +541,6 @@ function FooterButton({
 }
 
 export function DateRangePickerLogpressoCalendarSurface({
-  theme = 'dark',
   size = 'medium',
   label,
   errorMessage,
@@ -551,6 +548,7 @@ export function DateRangePickerLogpressoCalendarSurface({
   presets = RANGE_DEFAULT_PRESETS,
   ...props
 }: DateRangePickerLogpressoCalendarSurfaceProps) {
+  const theme = useLogpressoTheme();
   const [activePreset, setActivePreset] = useState<string>(
     () => presets.find((p) => p.offset == null)?.id ?? 'custom'
   );
@@ -575,7 +573,6 @@ export function DateRangePickerLogpressoCalendarSurface({
               <DateInputLogpresso
                 slot="start"
                 size={size}
-                theme={theme}
                 bordered={false}
                 className="flex-1"
               />
@@ -589,7 +586,6 @@ export function DateRangePickerLogpressoCalendarSurface({
               <DateInputLogpresso
                 slot="end"
                 size={size}
-                theme={theme}
                 bordered={false}
                 className="flex-1"
               />

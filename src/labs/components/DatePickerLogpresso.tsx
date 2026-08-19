@@ -13,12 +13,10 @@ import {CalendarLogpresso} from './CalendarLogpresso';
 import {DateInputLogpresso} from './DateInputLogpresso';
 import {Popover as AriaPopover} from 'react-aria-components/Popover';
 import {TimeSelectLogpresso} from './TimeSelectLogpresso';
-import {focusRing} from './utils';
+import {focusRing, useLogpressoTheme} from './utils';
 
 export interface DatePickerLogpressoProps
   extends Omit<AriaDatePickerProps<DateValue>, 'children' | 'label'> {
-  /** @default 'dark' */
-  theme?: 'dark' | 'light';
   /** @default 'medium' */
   size?: 'small' | 'medium';
   label?: string;
@@ -165,13 +163,13 @@ function CalendarButton({
 }
 
 export function DatePickerLogpresso({
-  theme = 'dark',
   size = 'medium',
   label,
   errorMessage,
   description,
   ...props
 }: DatePickerLogpressoProps) {
+  const theme = useLogpressoTheme();
   return (
     <AriaDatePicker {...props}>
       {({state}) => (
@@ -189,7 +187,7 @@ export function DatePickerLogpresso({
               className={(renderProps) =>
                 groupStyles({...renderProps, size, theme})
               }>
-              <DateInputLogpresso size={size} theme={theme} bordered={false} className="flex-1" />
+              <DateInputLogpresso size={size} bordered={false} className="flex-1" />
               <CalendarButton theme={theme} size={size} />
             </Group>
             {description && (
@@ -214,11 +212,10 @@ export function DatePickerLogpresso({
                 ? 'border-[#2a3340] bg-[#171c24]'
                 : 'border-[#dce2ea] bg-white shadow-[0_8px_24px_rgba(17,24,39,0.12)]'
             }`}>
-            <CalendarLogpresso theme={theme} />
+            <CalendarLogpresso />
             {state.hasTime && (
               <div className="mt-2">
                 <TimeSelectLogpresso
-                  theme={theme}
                   size={size}
                   value={state.timeValue}
                   onChange={(time) => state.setTimeValue(time)}

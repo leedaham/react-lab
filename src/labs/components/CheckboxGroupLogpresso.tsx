@@ -6,20 +6,15 @@ import {
 import {composeRenderProps} from 'react-aria-components/composeRenderProps';
 import {Label} from 'react-aria-components/Label';
 import {twMerge} from 'tailwind-merge';
+import {useLogpressoTheme} from './utils';
 
 export interface CheckboxGroupLogpressoProps extends Omit<RACCheckboxGroupProps, 'children'> {
-  /** @default 'dark' */
-  theme?: 'dark' | 'light';
   label?: string;
   children?: React.ReactNode;
 }
 
-export function CheckboxGroupLogpresso({
-  theme = 'dark',
-  label,
-  children,
-  ...props
-}: CheckboxGroupLogpressoProps) {
+export function CheckboxGroupLogpresso({label, children, ...props}: CheckboxGroupLogpressoProps) {
+  const theme = useLogpressoTheme();
   return (
     <RACCheckboxGroup
       {...props}

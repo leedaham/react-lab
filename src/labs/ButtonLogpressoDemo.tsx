@@ -1,10 +1,13 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {ButtonLogpresso, type ButtonLogpressoProps} from './components/ButtonLogpresso';
+import {ThemeToggle} from './components/ThemeToggle';
 import {PropsInheritance} from './components/PropsInheritance';
+import {useLogpressoTheme} from './components/utils';
 
 const usageCode = `import { ButtonLogpresso } from './components/ButtonLogpresso';
 
-<ButtonLogpresso theme="dark" variant="primary" size="medium" onPress={() => console.log('clicked')}>
+// 테마는 <html data-theme="dark"> 값을 자동으로 감지합니다.
+<ButtonLogpresso variant="primary" size="medium" onPress={() => console.log('clicked')}>
   저장
 </ButtonLogpresso>`;
 
@@ -54,8 +57,14 @@ export default function ButtonLogpressoDemo() {
   const variants: ButtonLogpressoProps['variant'][] = ['default', 'primary', 'text', 'danger'];
   const sizes: ButtonLogpressoProps['size'][] = ['large', 'medium', 'small', 'xsmall'];
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const theme = useLogpressoTheme();
   const isDark = theme === 'dark';
+
+  useEffect(() => {
+    if (!document.documentElement.getAttribute('data-theme')) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  }, []);
 
   return (
     <div className={`flex flex-col gap-8 p-6 font-sans ${isDark ? 'bg-[#0b0f15]' : 'bg-white'}`}>
@@ -63,16 +72,7 @@ export default function ButtonLogpressoDemo() {
         <h1 className={`text-sm font-medium ${isDark ? 'text-[#ebebeb]' : 'text-[#111827]'}`}>
           Button Logpresso
         </h1>
-        <button
-          type="button"
-          onClick={() => setTheme(isDark ? 'light' : 'dark')}
-          className={`w-fit rounded-lg border px-3 py-1 text-xs font-medium transition ${
-            isDark
-              ? 'border-[#151c33] bg-[#0e1322] text-[#ebebeb] hover:bg-[#151c33]'
-              : 'border-[#dce2ea] bg-[#f1f3f7] text-[#111827] hover:bg-white'
-          }`}>
-          {isDark ? '라이트 모드' : '다크 모드'}
-        </button>
+        <ThemeToggle />
       </div>
 
       <section>
@@ -83,7 +83,7 @@ export default function ButtonLogpressoDemo() {
           {variants.map((variant) => (
             <div key={variant} className="flex flex-col gap-3">
               {sizes.map((size) => (
-                <ButtonLogpresso key={size} theme={theme} variant={variant} size={size}>
+                <ButtonLogpresso key={size} variant={variant} size={size}>
                   {variant} / {size}
                 </ButtonLogpresso>
               ))}
@@ -97,19 +97,19 @@ export default function ButtonLogpressoDemo() {
           비활성 / 로딩 상태
         </h2>
         <div className="flex flex-wrap gap-3">
-          <ButtonLogpresso theme={theme} variant="primary" isDisabled>
+          <ButtonLogpresso  variant="primary" isDisabled>
             비활성
           </ButtonLogpresso>
-          <ButtonLogpresso theme={theme} variant="default" isDisabled>
+          <ButtonLogpresso  variant="default" isDisabled>
             비활성
           </ButtonLogpresso>
-          <ButtonLogpresso theme={theme} variant="danger" isDisabled>
+          <ButtonLogpresso  variant="danger" isDisabled>
             비활성
           </ButtonLogpresso>
-          <ButtonLogpresso theme={theme} variant="primary" isPending>
+          <ButtonLogpresso  variant="primary" isPending>
             저장 중
           </ButtonLogpresso>
-          <ButtonLogpresso theme={theme} variant="default" isPending>
+          <ButtonLogpresso  variant="default" isPending>
             확인 중
           </ButtonLogpresso>
         </div>
@@ -121,7 +121,7 @@ export default function ButtonLogpressoDemo() {
         </h2>
         <div className="flex flex-wrap items-center gap-3">
           <ButtonLogpresso
-            theme={theme}
+            
             variant="default"
             size="small"
             hasDropdown
@@ -129,7 +129,7 @@ export default function ButtonLogpressoDemo() {
             Tenant
           </ButtonLogpresso>
           <ButtonLogpresso
-            theme={theme}
+            
             variant="primary"
             size="small"
             hasDropdown
@@ -174,11 +174,6 @@ export default function ButtonLogpressoDemo() {
               <td className="py-2 font-mono text-xs">medium</td>
             </tr>
             <tr className={`border-b ${isDark ? 'border-[#151c33] text-[#ebebeb]' : 'border-gray-100'}`}>
-              <td className="py-2 pr-4 font-mono text-xs">theme</td>
-              <td className="py-2 pr-4">dark / light</td>
-              <td className="py-2 font-mono text-xs">dark</td>
-            </tr>
-            <tr className={`border-b ${isDark ? 'border-[#151c33] text-[#ebebeb]' : 'border-gray-100'}`}>
               <td className="py-2 pr-4 font-mono text-xs">hasDropdown</td>
               <td className="py-2 pr-4">우측에 드롭다운 화살표 표시</td>
               <td className="py-2 font-mono text-xs">false</td>
@@ -197,8 +192,9 @@ export default function ButtonLogpressoDemo() {
         </table>
         <p className={`mt-3 text-sm ${isDark ? 'text-[#778293]' : 'text-[#111827]/70'}`}>
           Tab 키로 이동하면 키보드 포커스 링이 보입니다. 색상·높이·패딩은 Logpresso Button
-          문서의 variant/size/state recipe를 따릅니다. 우측 상단 버튼으로 라이트/다크 테마를
-          전환할 수 있습니다.
+          문서의 variant/size/state recipe를 따릅니다. 테마는{' '}
+          <code className="font-mono text-xs">&lt;html data-theme&gt;</code> 값을 자동 감지하며,
+          우측 상단의 ThemeToggle로 바로 바꿔볼 수 있습니다.
         </p>
         <PropsInheritance
           chain={buttonChain}
@@ -206,7 +202,6 @@ export default function ButtonLogpressoDemo() {
           customProps={[
             {name: 'variant', desc: 'default / primary / text / danger', default: 'primary'},
             {name: 'size', desc: 'large / medium / small / xsmall', default: 'medium'},
-            {name: 'theme', desc: 'dark / light', default: 'dark'},
             {name: 'hasDropdown', desc: '우측 드롭다운 화살표 표시', default: 'false'}
           ]}
           docsUrl="https://react-aria.adobe.com/Button#api"

@@ -4,15 +4,13 @@ import {
   type ButtonProps as RACButtonProps
 } from 'react-aria-components/Button';
 import {tv} from 'tailwind-variants';
-import {focusRing} from './utils';
+import {focusRing, useLogpressoTheme} from './utils';
 
 export interface ButtonLogpressoProps extends RACButtonProps {
   /** @default 'primary' */
   variant?: 'default' | 'primary' | 'text' | 'danger';
   /** @default 'medium' */
   size?: 'large' | 'medium' | 'small' | 'xsmall';
-  /** @default 'dark' */
-  theme?: 'dark' | 'light';
   /** @default false */
   hasDropdown?: boolean;
 }
@@ -90,11 +88,11 @@ function DropdownIndicator() {
 export function ButtonLogpresso({
   variant,
   size,
-  theme = 'dark',
   hasDropdown,
   children,
   ...props
 }: ButtonLogpressoProps) {
+  const theme = useLogpressoTheme();
   const stroke = contentStroke(variant, theme);
   return (
     <RACButton

@@ -14,7 +14,7 @@ import {Label} from 'react-aria-components/Label';
 import {FieldError} from 'react-aria-components/FieldError';
 import {composeRenderProps} from 'react-aria-components/composeRenderProps';
 import {tv} from 'tailwind-variants';
-import {focusRing} from './utils';
+import {focusRing, useLogpressoTheme} from './utils';
 
 export interface SelectLogpressoOption {
   id: string;
@@ -25,8 +25,6 @@ export interface SelectLogpressoProps extends Omit<
   AriaSelectProps<SelectLogpressoOption>,
   'children' | 'items' | 'label' | 'description' | 'errorMessage'
 > {
-  /** @default 'dark' */
-  theme?: 'dark' | 'light';
   /** @default 'medium' */
   size?: 'small' | 'medium';
   label?: string;
@@ -272,7 +270,6 @@ function SelectPopover({theme, children}: {theme: 'dark' | 'light'; children: Re
 }
 
 export function SelectLogpresso({
-  theme = 'dark',
   size = 'medium',
   label,
   placeholder = '선택하세요',
@@ -280,6 +277,7 @@ export function SelectLogpresso({
   errorMessage,
   ...props
 }: SelectLogpressoProps) {
+  const theme = useLogpressoTheme();
   return (
     <AriaSelect
       {...props}

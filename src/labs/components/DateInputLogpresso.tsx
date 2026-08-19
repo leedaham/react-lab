@@ -6,12 +6,11 @@ import {
 } from 'react-aria-components/DateField';
 import {composeRenderProps} from 'react-aria-components/composeRenderProps';
 import {tv} from 'tailwind-variants';
+import {useLogpressoTheme} from './utils';
 
 export interface DateInputLogpressoProps extends Omit<DateInputProps, 'children'> {
   /** @default 'medium' */
   size?: 'small' | 'medium';
-  /** @default 'dark' */
-  theme?: 'dark' | 'light';
   /** 표면(테두리/배경) 없이 세그먼트만 렌더링 (DatePicker 안에서 Group이 표면 담당 시 사용) @default true */
   bordered?: boolean;
 }
@@ -196,7 +195,8 @@ const inputStyles = tv({
   ]
 });
 
-export function DateInputLogpresso({size = 'medium', theme = 'dark', bordered = true, ...props}: DateInputLogpressoProps) {
+export function DateInputLogpresso({size = 'medium', bordered = true, ...props}: DateInputLogpressoProps) {
+  const theme = useLogpressoTheme();
   return (
     <RACDateInput
       {...props}

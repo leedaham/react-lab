@@ -4,14 +4,13 @@ import {
   SelectLogpresso,
   type SelectLogpressoOption
 } from './SelectLogpresso';
+import {useLogpressoTheme} from './utils';
 
 export interface TimeSelectLogpressoProps {
   value: TimeValue | null;
   onChange: (time: Time) => void;
   /** @default 24 */
   hourCycle?: 12 | 24;
-  /** @default 'dark' */
-  theme?: 'dark' | 'light';
   /** @default 'medium' */
   size?: 'small' | 'medium';
 }
@@ -37,9 +36,9 @@ export function TimeSelectLogpresso({
   value,
   onChange,
   hourCycle = 24,
-  theme = 'dark',
   size = 'medium'
 }: TimeSelectLogpressoProps) {
+  const theme = useLogpressoTheme();
   const isNull = value == null;
   const hour = value?.hour ?? 0;
   const minute = value?.minute ?? 0;
@@ -59,7 +58,6 @@ export function TimeSelectLogpresso({
   };
 
   const selectProps = {
-    theme,
     size
   };
 

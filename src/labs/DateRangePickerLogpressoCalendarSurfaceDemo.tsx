@@ -1,14 +1,16 @@
-import {useState} from 'react';
+import {useEffect} from 'react';
 import {parseDate} from '@internationalized/date';
 import {DateRangePickerLogpressoCalendarSurface} from './components/DateRangePickerLogpressoCalendarSurface';
+import {ThemeToggle} from './components/ThemeToggle';
 import {PropsInheritance} from './components/PropsInheritance';
+import {useLogpressoTheme} from './components/utils';
 
 const usageCode = `import { DateRangePickerLogpressoCalendarSurface } from './components/DateRangePickerLogpressoCalendarSurface';
 import { parseDate } from '@internationalized/date';
 
+// 테마는 <html data-theme="dark"> 값을 자동으로 감지합니다.
 // 기간 선택: 프리셋(오늘/7일/30일/60일/90일/커스텀) + 두 달 달력 + 취소/확인
 <DateRangePickerLogpressoCalendarSurface
-  theme="dark"
   size="medium"
   label="조회 기간"
   granularity="day"
@@ -61,8 +63,14 @@ const rangeGroups = [
 ];
 
 export default function DateRangePickerLogpressoCalendarSurfaceDemo() {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const theme = useLogpressoTheme();
   const isDark = theme === 'dark';
+
+  useEffect(() => {
+    if (!document.documentElement.getAttribute('data-theme')) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  }, []);
 
   return (
     <div className={`flex flex-col gap-8 p-6 font-sans ${isDark ? 'bg-[#0b0f15]' : 'bg-white'}`}>
@@ -70,16 +78,7 @@ export default function DateRangePickerLogpressoCalendarSurfaceDemo() {
         <h1 className={`text-sm font-medium ${isDark ? 'text-[#ebebeb]' : 'text-[#111827]'}`}>
           DateRangePicker CalendarSurface (Logpresso)
         </h1>
-        <button
-          type="button"
-          onClick={() => setTheme(isDark ? 'light' : 'dark')}
-          className={`w-fit rounded-lg border px-3 py-1 text-xs font-medium transition ${
-            isDark
-              ? 'border-[#151c33] bg-[#0e1322] text-[#ebebeb] hover:bg-[#151c33]'
-              : 'border-[#dce2ea] bg-[#f1f3f7] text-[#111827] hover:bg-white'
-          }`}>
-          {isDark ? '라이트 모드' : '다크 모드'}
-        </button>
+        <ThemeToggle />
       </div>
 
       <section>
@@ -88,7 +87,6 @@ export default function DateRangePickerLogpressoCalendarSurfaceDemo() {
         </h2>
         <div className="max-w-[320px]">
           <DateRangePickerLogpressoCalendarSurface
-            theme={theme}
             size="medium"
             label="조회 기간"
             granularity="day"
@@ -108,7 +106,6 @@ export default function DateRangePickerLogpressoCalendarSurfaceDemo() {
         </h2>
         <div className="max-w-[320px]">
           <DateRangePickerLogpressoCalendarSurface
-            theme={theme}
             size="medium"
             label="보고 기간"
             granularity="day"
@@ -134,7 +131,6 @@ export default function DateRangePickerLogpressoCalendarSurfaceDemo() {
         <div className="flex flex-wrap items-end gap-6">
           <div className="w-[260px]">
             <DateRangePickerLogpressoCalendarSurface
-              theme={theme}
               size="small"
               label="Small"
               granularity="day"
@@ -146,7 +142,6 @@ export default function DateRangePickerLogpressoCalendarSurfaceDemo() {
           </div>
           <div className="w-[260px]">
             <DateRangePickerLogpressoCalendarSurface
-              theme={theme}
               size="medium"
               label="비활성"
               granularity="day"
@@ -159,7 +154,6 @@ export default function DateRangePickerLogpressoCalendarSurfaceDemo() {
           </div>
           <div className="w-[260px]">
             <DateRangePickerLogpressoCalendarSurface
-              theme={theme}
               size="medium"
               label="오류"
               granularity="day"
@@ -199,11 +193,6 @@ export default function DateRangePickerLogpressoCalendarSurfaceDemo() {
           </thead>
           <tbody>
             <tr className={`border-b ${isDark ? 'border-[#151c33] text-[#ebebeb]' : 'border-gray-100'}`}>
-              <td className="py-2 pr-4 font-mono text-xs">theme</td>
-              <td className="py-2 pr-4">dark / light</td>
-              <td className="py-2 font-mono text-xs">dark</td>
-            </tr>
-            <tr className={`border-b ${isDark ? 'border-[#151c33] text-[#ebebeb]' : 'border-gray-100'}`}>
               <td className="py-2 pr-4 font-mono text-xs">size</td>
               <td className="py-2 pr-4">small (24px) / medium (30px)</td>
               <td className="py-2 font-mono text-xs">medium</td>
@@ -233,14 +222,14 @@ export default function DateRangePickerLogpressoCalendarSurfaceDemo() {
         <p className={`mt-3 text-sm ${isDark ? 'text-[#778293]' : 'text-[#111827]/70'}`}>
           팝업은 CalendarSurface 스펙의 monthLayout=double 구조를 따릅니다. 두 달 달력(232px x 2)에서
           시작일·종료일을 연속으로 선택하면 오렌지 범위 밴드와 양 끝 점이 표시됩니다. 기본 프리셋은
-          오늘 / 7일 / 30일 / 60일 / 90일 / 커스텀이며, 오늘 기준 기간이 시작일~끝 일까지 적용됩니다.
-          우측 상단 버튼으로 라이트/다크 테마를 전환할 수 있습니다.
+          오늘 / 7일 / 30일 / 60일 / 90일 / 커스텀이며, 오늘 기준 기간이 시작일~끝 일까지 적용됩니다. 테마는{' '}
+          <code className="font-mono text-xs">&lt;html data-theme&gt;</code> 값을 자동 감지하며,
+          우측 상단의 ThemeToggle로 바로 바꿔볼 수 있습니다.
         </p>
         <PropsInheritance
           chain={rangeChain}
           groups={rangeGroups}
           customProps={[
-            {name: 'theme', desc: 'dark / light', default: 'dark'},
             {name: 'size', desc: 'small / medium', default: 'medium'},
             {name: 'label', desc: '상단 라벨 텍스트'},
             {name: 'description', desc: '하단 설명 텍스트'},

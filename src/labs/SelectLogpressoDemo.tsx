@@ -1,6 +1,8 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {SelectLogpresso, type SelectLogpressoOption} from './components/SelectLogpresso';
+import {ThemeToggle} from './components/ThemeToggle';
 import {PropsInheritance} from './components/PropsInheritance';
+import {useLogpressoTheme} from './components/utils';
 
 const usageCode = `import { SelectLogpresso } from './components/SelectLogpresso';
 
@@ -12,8 +14,8 @@ const items = [
 
 const [selected, setSelected] = useState<string>();
 
+// 테마는 <html data-theme="dark"> 값을 자동으로 감지합니다.
 <SelectLogpresso
-  theme="dark"
   size="medium"
   label="국가"
   placeholder="국가를 선택하세요"
@@ -108,8 +110,14 @@ const severities: SelectLogpressoOption[] = [
 export default function SelectLogpressoDemo() {
   const [country, setCountry] = useState<string | undefined>(undefined);
   const [severity, setSeverity] = useState<string | undefined>('high');
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const theme = useLogpressoTheme();
   const isDark = theme === 'dark';
+
+  useEffect(() => {
+    if (!document.documentElement.getAttribute('data-theme')) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  }, []);
 
   return (
     <div className={`flex flex-col gap-8 p-6 font-sans ${isDark ? 'bg-[#0b0f15]' : 'bg-white'}`}>
@@ -117,16 +125,7 @@ export default function SelectLogpressoDemo() {
         <h1 className={`text-sm font-medium ${isDark ? 'text-[#ebebeb]' : 'text-[#111827]'}`}>
           Select Logpresso
         </h1>
-        <button
-          type="button"
-          onClick={() => setTheme(isDark ? 'light' : 'dark')}
-          className={`w-fit rounded-lg border px-3 py-1 text-xs font-medium transition ${
-            isDark
-              ? 'border-[#151c33] bg-[#0e1322] text-[#ebebeb] hover:bg-[#151c33]'
-              : 'border-[#dce2ea] bg-[#f1f3f7] text-[#111827] hover:bg-white'
-          }`}>
-          {isDark ? '라이트 모드' : '다크 모드'}
-        </button>
+        <ThemeToggle />
       </div>
 
       <section>
@@ -135,7 +134,6 @@ export default function SelectLogpressoDemo() {
         </h2>
         <div className="max-w-[220px]">
           <SelectLogpresso
-            theme={theme}
             size="medium"
             placeholder="국가를 선택하세요"
             items={countries}
@@ -156,7 +154,6 @@ export default function SelectLogpressoDemo() {
         </h2>
         <div className="max-w-[220px]">
           <SelectLogpresso
-            theme={theme}
             size="medium"
             label="심각도"
             items={severities}
@@ -173,7 +170,6 @@ export default function SelectLogpressoDemo() {
         <div className="flex flex-wrap items-end gap-4">
           <div className="w-[180px]">
             <SelectLogpresso
-              theme={theme}
               size="small"
               label="Small"
               placeholder="Small (24px)"
@@ -182,7 +178,6 @@ export default function SelectLogpressoDemo() {
           </div>
           <div className="w-[180px]">
             <SelectLogpresso
-              theme={theme}
               size="medium"
               label="비활성"
               items={severities}
@@ -192,7 +187,6 @@ export default function SelectLogpressoDemo() {
           </div>
           <div className="w-[180px]">
             <SelectLogpresso
-              theme={theme}
               size="medium"
               label="오류"
               items={severities}
@@ -209,7 +203,6 @@ export default function SelectLogpressoDemo() {
         </h2>
         <div className="w-[220px]">
           <SelectLogpresso
-            theme={theme}
             size="medium"
             label="조회 상태"
             placeholder="불러오는 중..."
@@ -240,11 +233,6 @@ export default function SelectLogpressoDemo() {
             </tr>
           </thead>
           <tbody>
-            <tr className={`border-b ${isDark ? 'border-[#151c33] text-[#ebebeb]' : 'border-gray-100'}`}>
-              <td className="py-2 pr-4 font-mono text-xs">theme</td>
-              <td className="py-2 pr-4">dark / light</td>
-              <td className="py-2 font-mono text-xs">dark</td>
-            </tr>
             <tr className={`border-b ${isDark ? 'border-[#151c33] text-[#ebebeb]' : 'border-gray-100'}`}>
               <td className="py-2 pr-4 font-mono text-xs">size</td>
               <td className="py-2 pr-4">small (24px) / medium (30px)</td>
@@ -295,13 +283,14 @@ export default function SelectLogpressoDemo() {
         <p className={`mt-3 text-sm ${isDark ? 'text-[#778293]' : 'text-[#111827]/70'}`}>
           트리거 높이는 Logpresso control height(Small 24px / Medium 30px)를 따릅니다. 열린 옵션
           패널은 별도 소유권(Overlay Panel)이므로 트리거와 분리해 표면·border를 다르게
-          스타일링했습니다. 우측 상단 버튼으로 라이트/다크 테마를 전환할 수 있습니다.
+          스타일링했습니다. 테마는{' '}
+          <code className="font-mono text-xs">&lt;html data-theme&gt;</code> 값을 자동 감지하며,
+          우측 상단의 ThemeToggle로 바로 바꿔볼 수 있습니다.
         </p>
         <PropsInheritance
           chain={selectChain}
           groups={selectGroups}
           customProps={[
-            {name: 'theme', desc: 'dark / light', default: 'dark'},
             {name: 'size', desc: 'small / medium', default: 'medium'},
             {name: 'label', desc: '상단 라벨 텍스트'},
             {name: 'items', desc: '{id, name} 형태의 옵션 배열'},

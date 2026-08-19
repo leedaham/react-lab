@@ -31,12 +31,10 @@ import {Popover as AriaPopover} from 'react-aria-components/Popover';
 import {composeRenderProps} from 'react-aria-components/composeRenderProps';
 import {tv} from 'tailwind-variants';
 import {DateInputLogpresso} from './DateInputLogpresso';
-import {focusRing} from './utils';
+import {focusRing, useLogpressoTheme} from './utils';
 
 export interface DatePickerLogpressoCalendarSurfaceProps
   extends Omit<AriaDatePickerProps<DateValue>, 'children' | 'label'> {
-  /** @default 'dark' */
-  theme?: 'dark' | 'light';
   /** @default 'medium' */
   size?: 'small' | 'medium';
   label?: string;
@@ -622,7 +620,6 @@ function FooterButton({
 }
 
 export function DatePickerLogpressoCalendarSurface({
-  theme = 'dark',
   size = 'medium',
   label,
   errorMessage,
@@ -630,6 +627,7 @@ export function DatePickerLogpressoCalendarSurface({
   presets = DEFAULT_PRESETS,
   ...props
 }: DatePickerLogpressoCalendarSurfaceProps) {
+  const theme = useLogpressoTheme();
   const [activePreset, setActivePreset] = useState<string>(
     () => presets.find((p) => p.offset == null)?.id ?? 'custom'
   );
@@ -653,7 +651,6 @@ export function DatePickerLogpressoCalendarSurface({
               }>
               <DateInputLogpresso
                 size={size}
-                theme={theme}
                 bordered={false}
                 className="flex-1"
               />

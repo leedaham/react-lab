@@ -1,14 +1,16 @@
-import {useState} from 'react';
+import {useEffect} from 'react';
 import {parseDateTime} from '@internationalized/date';
 import {DatePickerLogpresso} from './components/DatePickerLogpresso';
+import {ThemeToggle} from './components/ThemeToggle';
 import {PropsInheritance} from './components/PropsInheritance';
+import {useLogpressoTheme} from './components/utils';
 
 const usageCode = `import { DatePickerLogpresso } from './components/DatePickerLogpresso';
 import { parseDateTime } from '@internationalized/date';
 
+// 테마는 <html data-theme="dark"> 값을 자동으로 감지합니다.
 // 날짜 + 시·분
 <DatePickerLogpresso
-  theme="dark"
   size="medium"
   label="예약 시간"
   granularity="minute"
@@ -69,8 +71,14 @@ const datePickerGroups = [
 ];
 
 export default function DatePickerLogpressoDemo() {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const theme = useLogpressoTheme();
   const isDark = theme === 'dark';
+
+  useEffect(() => {
+    if (!document.documentElement.getAttribute('data-theme')) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  }, []);
 
   return (
     <div className={`flex flex-col gap-8 p-6 font-sans ${isDark ? 'bg-[#0b0f15]' : 'bg-white'}`}>
@@ -78,16 +86,7 @@ export default function DatePickerLogpressoDemo() {
         <h1 className={`text-sm font-medium ${isDark ? 'text-[#ebebeb]' : 'text-[#111827]'}`}>
           DatePicker Logpresso
         </h1>
-        <button
-          type="button"
-          onClick={() => setTheme(isDark ? 'light' : 'dark')}
-          className={`w-fit rounded-lg border px-3 py-1 text-xs font-medium transition ${
-            isDark
-              ? 'border-[#151c33] bg-[#0e1322] text-[#ebebeb] hover:bg-[#151c33]'
-              : 'border-[#dce2ea] bg-[#f1f3f7] text-[#111827] hover:bg-white'
-          }`}>
-          {isDark ? '라이트 모드' : '다크 모드'}
-        </button>
+        <ThemeToggle />
       </div>
 
       <section>
@@ -96,7 +95,6 @@ export default function DatePickerLogpressoDemo() {
         </h2>
         <div className="max-w-[300px]">
           <DatePickerLogpresso
-            theme={theme}
             size="medium"
             label="회의 시작"
             granularity="minute"
@@ -114,7 +112,6 @@ export default function DatePickerLogpressoDemo() {
         <div className="flex flex-wrap items-end gap-6">
           <div className="max-w-[280px]">
             <DatePickerLogpresso
-              theme={theme}
               size="medium"
               label="24시간제"
               granularity="minute"
@@ -125,7 +122,6 @@ export default function DatePickerLogpressoDemo() {
           </div>
           <div className="max-w-[280px]">
             <DatePickerLogpresso
-              theme={theme}
               size="medium"
               label="12시간제"
               granularity="minute"
@@ -144,7 +140,6 @@ export default function DatePickerLogpressoDemo() {
         <div className="flex flex-wrap items-end gap-6">
           <div className="w-[240px]">
             <DatePickerLogpresso
-              theme={theme}
               size="small"
               label="Small"
               granularity="minute"
@@ -153,7 +148,6 @@ export default function DatePickerLogpressoDemo() {
           </div>
           <div className="w-[240px]">
             <DatePickerLogpresso
-              theme={theme}
               size="medium"
               label="비활성"
               granularity="minute"
@@ -163,7 +157,6 @@ export default function DatePickerLogpressoDemo() {
           </div>
           <div className="w-[240px]">
             <DatePickerLogpresso
-              theme={theme}
               size="medium"
               label="오류"
               granularity="minute"
@@ -199,11 +192,6 @@ export default function DatePickerLogpressoDemo() {
             </tr>
           </thead>
           <tbody>
-            <tr className={`border-b ${isDark ? 'border-[#151c33] text-[#ebebeb]' : 'border-gray-100'}`}>
-              <td className="py-2 pr-4 font-mono text-xs">theme</td>
-              <td className="py-2 pr-4">dark / light</td>
-              <td className="py-2 font-mono text-xs">dark</td>
-            </tr>
             <tr className={`border-b ${isDark ? 'border-[#151c33] text-[#ebebeb]' : 'border-gray-100'}`}>
               <td className="py-2 pr-4 font-mono text-xs">size</td>
               <td className="py-2 pr-4">small (24px) / medium (30px)</td>
@@ -245,14 +233,14 @@ export default function DatePickerLogpressoDemo() {
           트리거 높이는 Logpresso control height(Small 24px / Medium 30px)를 따르고, 캘린더
           아이콘은 16x16입니다. 열린 캘린더는 CalendarSurface 규칙(accent 원형 선택 pill,
           24x24 셀)을 따르며 overlay 표면은 트리거와 분리해 스타일링했습니다. 시·분은 캘린더
-          아래의 드롭다운에서 선택합니다. 우측 상단 버튼으로 라이트/다크 테마를 전환할 수
-          있습니다.
+          아래의 드롭다운에서 선택합니다. 테마는{' '}
+          <code className="font-mono text-xs">&lt;html data-theme&gt;</code> 값을 자동 감지하며,
+          우측 상단의 ThemeToggle로 바로 바꿔볼 수 있습니다.
         </p>
         <PropsInheritance
           chain={datePickerChain}
           groups={datePickerGroups}
           customProps={[
-            {name: 'theme', desc: 'dark / light', default: 'dark'},
             {name: 'size', desc: 'small / medium', default: 'medium'},
             {name: 'label', desc: '상단 라벨 텍스트'},
             {name: 'description', desc: '하단 설명 텍스트'},

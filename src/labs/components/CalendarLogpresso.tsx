@@ -14,11 +14,9 @@ import {Heading} from 'react-aria-components/Heading';
 import type {DateValue} from 'react-aria-components/DatePicker';
 import {composeRenderProps} from 'react-aria-components/composeRenderProps';
 import {tv} from 'tailwind-variants';
+import {useLogpressoTheme} from './utils';
 
-export interface CalendarLogpressoProps extends CalendarProps<DateValue> {
-  /** @default 'dark' */
-  theme?: 'dark' | 'light';
-}
+export interface CalendarLogpressoProps extends CalendarProps<DateValue> {}
 
 const cellStyles = tv({
   base: 'w-full h-full flex items-center justify-center rounded-full text-xs leading-4 cursor-default transition [-webkit-tap-highlight-color:transparent] forced-color-adjust-none',
@@ -148,7 +146,8 @@ function NavButtonLogpresso({theme, children, ...props}: ButtonProps & {theme: '
   );
 }
 
-export function CalendarLogpresso({theme = 'dark', ...props}: CalendarLogpressoProps) {
+export function CalendarLogpresso({...props}: CalendarLogpressoProps) {
+  const theme = useLogpressoTheme();
   return (
     <RACCalendar {...props} className="font-sans">
       <header className="mb-2 flex h-6 items-center justify-between">

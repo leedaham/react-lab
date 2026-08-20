@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useRef} from 'react';
 import {
   ToastLogpressoProvider,
   ToastLogpressoRegion,
@@ -10,7 +10,8 @@ import {ThemeToggle} from './components/ThemeToggle';
 import {PropsInheritance} from './components/PropsInheritance';
 import {useLogpressoTheme} from './components/utils';
 
-const usageCode = `import {
+const usageCode = `import {useEffect, useRef} from 'react';
+import {
   ToastLogpressoProvider,
   ToastLogpressoRegion,
   useToastLogpressoQueue
@@ -27,6 +28,20 @@ function App() {
 
 function MyPage() {
   const queue = useToastLogpressoQueue();
+  const didShow = useRef(false);
+
+  useEffect(() => {
+    if (!didShow.current) {
+      didShow.current = true;
+      // 페이지 진입 시 자동으로 보여줄 Toast
+      queue.add(
+        {title: '안내', message: '3초 후 자동으로 닫힙니다.', state: 'info'},
+        {timeout: 3000}
+      );
+      queue.add({title: '알림', message: '수동으로 닫아야 합니다.', state: 'neutral'});
+    }
+  }, [queue]);
+
   return (
     <button
       onClick={() =>
@@ -85,6 +100,18 @@ export default function ToastLogpressoDemo() {
 
 function ToastLogpressoDemoContent({isDark}: {isDark: boolean}) {
   const queue = useToastLogpressoQueue();
+  const didShow = useRef(false);
+
+  useEffect(() => {
+    if (!didShow.current) {
+      didShow.current = true;
+      queue.add(
+        {title: '안내', message: '3초 후 자동으로 닫힙니다.', state: 'info'},
+        {timeout: 3000}
+      );
+      queue.add({title: '알림', message: '수동으로 닫아야 합니다.', state: 'neutral'});
+    }
+  }, [queue]);
 
   return (
     <div
@@ -102,8 +129,37 @@ function ToastLogpressoDemoContent({isDark}: {isDark: boolean}) {
 
       <section>
         <h2 className={`mb-3 text-sm font-medium ${isDark ? 'text-[#ebebeb]' : 'text-[#111827]'}`}>
+          시작 시 자동 Toast
+        </h2>
+        <p className={`text-sm ${isDark ? 'text-[#f2f5f8]' : 'text-[#111827]'}`}>
+          이 페이지에 들어오면 자동으로 두 개의 Toast가 표시됩니다.
+        </p>
+        <p className={`text-sm ${isDark ? 'text-[#778293]' : 'text-[#6b7280]'}`}>
+          - info Toast는 3초 후에 자동으로 닫힙니다.
+        </p>
+        <p className={`text-sm ${isDark ? 'text-[#778293]' : 'text-[#6b7280]'}`}>
+          - neutral Toast는 닫기 버튼을 누르기 전까지 계속 남아 있습니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className={`mb-3 text-sm font-medium ${isDark ? 'text-[#ebebeb]' : 'text-[#111827]'}`}>
           상태별 Toast
         </h2>
+        <ButtonLogpresso
+          key='TEST'
+          variant='default'
+          size="small"
+          onPress={() => queue.add(
+            {
+              title: '완료',
+              message: '저장되었습니다.',
+              state: 'success'
+            }
+          )}>
+          추가
+        </ButtonLogpresso>
+
         <div className="flex flex-wrap gap-3">
           {sampleToasts.map((item) => (
             <ButtonLogpresso

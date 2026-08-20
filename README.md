@@ -1,5 +1,7 @@
 # React Lab
 
+Github Actions:  `https://leedaham.github.io/react-lab/`
+
 React 컴포넌트를 `src/labs/` 폴더에 .tsx 파일로 넣으면, 웹 브라우저에서 바로 목록으로 노출하고 화면에서 확인할 수 있는 실험실입니다. React + TypeScript + Tailwind CSS 환경입니다.
 
 ## 시작하기

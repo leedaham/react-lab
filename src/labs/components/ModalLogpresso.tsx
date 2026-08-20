@@ -21,8 +21,8 @@ export interface ModalLogpressoProps extends Omit<DialogTriggerProps, 'children'
   title: string;
   /** 모달 header 보조 설명 */
   caption?: string;
-  /** 열기 트리거 (ButtonLogpresso 등) */
-  trigger: React.ReactNode;
+  /** 열기 트리거 (ButtonLogpresso 등). 생략하면 isOpen/onOpenChange로 제어합니다. */
+  trigger?: React.ReactNode;
   /** modal body 콘텐츠 */
   children: React.ReactNode;
   /** footer를 직접 제공하지 않으면 취소/확인 기본 footer가 표시됩니다. */
@@ -74,6 +74,112 @@ const modalStyles = tv({
   }
 });
 
+interface ModalBodyProps {
+  size: '360' | '600' | '880' | '1120';
+  title: string;
+  caption?: string;
+  children: React.ReactNode;
+  footer?: React.ReactNode;
+  cancelLabel: string;
+  confirmLabel: string;
+  onConfirm?: () => void;
+  onCancel?: () => void;
+  className?: string;
+}
+
+function ModalBody({
+  size,
+  title,
+  caption,
+  children,
+  footer,
+  cancelLabel,
+  confirmLabel,
+  onConfirm,
+  onCancel,
+  className
+}: ModalBodyProps) {
+  const theme = useLogpressoTheme();
+  const isDark = theme === 'dark';
+
+  return (
+    <RACModal
+      className={composeRenderProps(className, (className) =>
+        modalStyles({theme, size, className})
+      )}>
+      <Dialog className="flex flex-col h-full outline-none">
+        {({close}) => (
+          <>
+            <header className="flex min-h-14 shrink-0 items-start justify-between gap-4 border-b-2 border-[#ff692a] p-4">
+              <div className="flex min-w-0 flex-col gap-1">
+                <Heading
+                  slot="title"
+                  className={`text-base font-semibold leading-6 ${
+                    isDark ? 'text-[#ebebeb]' : 'text-[#191919]'
+                  }`}>
+                  {title}
+                </Heading>
+                {caption && (
+                  <p className="text-sm leading-5 text-[#808080] line-clamp-1">
+                    {caption}
+                  </p>
+                )}
+              </div>
+              <button
+                type="button"
+                aria-label="닫기"
+                onClick={close}
+                className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md transition ${
+                  isDark
+                    ? 'text-[#778293] hover:bg-[#151c33] hover:text-[#ebebeb]'
+                    : 'text-[#6b7280] hover:bg-[#f1f3f7] hover:text-[#111827]'
+                }`}>
+                <X aria-hidden className="h-4 w-4" />
+              </button>
+            </header>
+
+            <div className="flex-1 overflow-y-auto p-4">
+              <div className="flex flex-col gap-4">{children}</div>
+            </div>
+
+            <footer
+              className={`flex min-h-[62px] shrink-0 items-center border-t p-4 ${
+                isDark
+                  ? 'border-[rgba(126,140,222,0.16)]'
+                  : 'border-[rgba(23,39,101,0.16)]'
+              }`}>
+              {footer ? (
+                footer
+              ) : (
+                <div className="ml-auto flex items-center gap-2">
+                  <ButtonLogpresso
+                    variant="default"
+                    size="small"
+                    onPress={() => {
+                      onCancel?.();
+                      close();
+                    }}>
+                    {cancelLabel}
+                  </ButtonLogpresso>
+                  <ButtonLogpresso
+                    variant="primary"
+                    size="small"
+                    onPress={() => {
+                      onConfirm?.();
+                      close();
+                    }}>
+                    {confirmLabel}
+                  </ButtonLogpresso>
+                </div>
+              )}
+            </footer>
+          </>
+        )}
+      </Dialog>
+    </RACModal>
+  );
+}
+
 export function ModalLogpresso({
   size = '600',
   title,
@@ -87,94 +193,54 @@ export function ModalLogpresso({
   onCancel,
   isDismissable = false,
   isKeyboardDismissDisabled = false,
+  isOpen,
+  defaultOpen,
+  onOpenChange,
   className,
   ...dialogTriggerProps
 }: ModalLogpressoProps) {
-  const theme = useLogpressoTheme();
-  const isDark = theme === 'dark';
+  const overlayClassName = (renderProps: any) => overlayStyles({...renderProps});
+  const body = (
+    <ModalBody
+      size={size}
+      title={title}
+      caption={caption}
+      footer={footer}
+      cancelLabel={cancelLabel}
+      confirmLabel={confirmLabel}
+      onConfirm={onConfirm}
+      onCancel={onCancel}
+      className={className}>
+      {children}
+    </ModalBody>
+  );
+
+  if (trigger) {
+    return (
+      <DialogTrigger
+        isOpen={isOpen}
+        defaultOpen={defaultOpen}
+        onOpenChange={onOpenChange}
+        {...dialogTriggerProps}>
+        {trigger}
+        <ModalOverlay
+          isDismissable={isDismissable}
+          isKeyboardDismissDisabled={isKeyboardDismissDisabled}
+          className={overlayClassName}>
+          {body}
+        </ModalOverlay>
+      </DialogTrigger>
+    );
+  }
 
   return (
-    <DialogTrigger {...dialogTriggerProps}>
-      {trigger}
-      <ModalOverlay
-        isDismissable={isDismissable}
-        isKeyboardDismissDisabled={isKeyboardDismissDisabled}
-        className={(renderProps) => overlayStyles({...renderProps})}>
-        <RACModal
-          className={composeRenderProps(className, (className) =>
-            modalStyles({theme, size, className})
-          )}>
-          <Dialog className="flex flex-col h-full outline-none">
-            {({close}) => (
-              <>
-                <header className="flex min-h-14 shrink-0 items-start justify-between gap-4 border-b-2 border-[#ff692a] p-4">
-                  <div className="flex min-w-0 flex-col gap-1">
-                    <Heading
-                      slot="title"
-                      className={`text-base font-semibold leading-6 ${
-                        isDark ? 'text-[#ebebeb]' : 'text-[#191919]'
-                      }`}>
-                      {title}
-                    </Heading>
-                    {caption && (
-                      <p className="text-sm leading-5 text-[#808080] line-clamp-1">
-                        {caption}
-                      </p>
-                    )}
-                  </div>
-                  <button
-                    type="button"
-                    aria-label="닫기"
-                    onClick={close}
-                    className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md transition ${
-                      isDark
-                        ? 'text-[#778293] hover:bg-[#151c33] hover:text-[#ebebeb]'
-                        : 'text-[#6b7280] hover:bg-[#f1f3f7] hover:text-[#111827]'
-                    }`}>
-                    <X aria-hidden className="h-4 w-4" />
-                  </button>
-                </header>
-
-                <div className="flex-1 overflow-y-auto p-4">
-                  <div className="flex flex-col gap-4">{children}</div>
-                </div>
-
-                <footer
-                  className={`flex min-h-[62px] shrink-0 items-center border-t p-4 ${
-                    isDark
-                      ? 'border-[rgba(126,140,222,0.16)]'
-                      : 'border-[rgba(23,39,101,0.16)]'
-                  }`}>
-                  {footer ? (
-                    footer
-                  ) : (
-                    <div className="ml-auto flex items-center gap-2">
-                      <ButtonLogpresso
-                        variant="default"
-                        size="small"
-                        onPress={() => {
-                          onCancel?.();
-                          close();
-                        }}>
-                        {cancelLabel}
-                      </ButtonLogpresso>
-                      <ButtonLogpresso
-                        variant="primary"
-                        size="small"
-                        onPress={() => {
-                          onConfirm?.();
-                          close();
-                        }}>
-                        {confirmLabel}
-                      </ButtonLogpresso>
-                    </div>
-                  )}
-                </footer>
-              </>
-            )}
-          </Dialog>
-        </RACModal>
-      </ModalOverlay>
-    </DialogTrigger>
+    <ModalOverlay
+      isOpen={isOpen}
+      onOpenChange={onOpenChange}
+      isDismissable={isDismissable}
+      isKeyboardDismissDisabled={isKeyboardDismissDisabled}
+      className={overlayClassName}>
+      {body}
+    </ModalOverlay>
   );
 }

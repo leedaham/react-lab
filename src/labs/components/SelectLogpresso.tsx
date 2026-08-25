@@ -293,6 +293,7 @@ export function SelectLogpresso({
       <SelectTrigger theme={theme} size={size} placeholder={placeholder} isPending={props.isPending} />
       <SelectPopover theme={theme}>
         <ListBox
+          key={theme}
           items={items}
           className="max-h-[inherit] overflow-auto p-1 outline-hidden [clip-path:inset(0_0_0_0_round_.75rem)]">
           {(item: SelectLogpressoOption) => (

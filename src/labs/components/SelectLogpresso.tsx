@@ -26,7 +26,7 @@ export interface SelectLogpressoProps extends Omit<
   'children' | 'items' | 'label' | 'description' | 'errorMessage'
 > {
   /** @default 'medium' */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large' | 'xlarge';
   label?: string;
   items: SelectLogpressoOption[];
   errorMessage?: string;
@@ -40,7 +40,9 @@ const triggerStyles = tv({
   variants: {
     size: {
       small: 'h-6 pl-2.5 pr-2 text-xs leading-4',
-      medium: 'h-[30px] pl-3 pr-2 text-sm leading-5'
+      medium: 'h-[30px] pl-3 pr-2 text-sm leading-5',
+      large: 'h-9 pl-3 pr-2.5 text-base leading-6',
+      xlarge: 'h-10 pl-3 pr-2.5 text-base leading-6'
     },
     theme: {
       dark: 'bg-[#0e1322] border-[#2a3340] text-[#f2f5f8]',
@@ -106,12 +108,12 @@ const triggerStyles = tv({
     {
       theme: 'dark',
       isDisabled: true,
-      className: 'bg-[#111720] border-[#2a3340] text-[#778293]'
+      className: 'bg-[#111720] border-[#2a3340] text-[#aeb8c5]'
     },
     {
       theme: 'light',
       isDisabled: true,
-      className: 'bg-[#f1f3f7] border-[#dce2ea] text-[#dce2ea]'
+      className: 'bg-[#f1f3f7] border-[#dce2ea] text-[#9aa4b2]'
     }
   ]
 });
@@ -203,7 +205,7 @@ function SelectTrigger({
   isPending
 }: {
   theme: 'dark' | 'light';
-  size: 'small' | 'medium';
+  size: 'small' | 'medium' | 'large' | 'xlarge';
   placeholder: string;
   isPending?: boolean;
 }) {

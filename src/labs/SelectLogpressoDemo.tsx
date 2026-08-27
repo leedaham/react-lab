@@ -165,17 +165,49 @@ export default function SelectLogpressoDemo() {
 
       <section>
         <h2 className={`mb-3 text-sm font-medium ${isDark ? 'text-[#ebebeb]' : 'text-[#111827]'}`}>
-          크기 Small / 비활성 / 오류
+          크기 Small / Medium / Large / XLarge
         </h2>
         <div className="flex flex-wrap items-end gap-4">
-          <div className="w-[180px]">
+          <div className="w-[160px]">
             <SelectLogpresso
               size="small"
-              label="Small"
-              placeholder="Small (24px)"
+              label="Small (24px)"
+              placeholder="Small"
               items={severities}
             />
           </div>
+          <div className="w-[160px]">
+            <SelectLogpresso
+              size="medium"
+              label="Medium (30px)"
+              placeholder="Medium"
+              items={severities}
+            />
+          </div>
+          <div className="w-[160px]">
+            <SelectLogpresso
+              size="large"
+              label="Large (36px)"
+              placeholder="Large"
+              items={severities}
+            />
+          </div>
+          <div className="w-[160px]">
+            <SelectLogpresso
+              size="xlarge"
+              label="XLarge (40px)"
+              placeholder="XLarge"
+              items={severities}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 className={`mb-3 text-sm font-medium ${isDark ? 'text-[#ebebeb]' : 'text-[#111827]'}`}>
+          비활성 / 오류
+        </h2>
+        <div className="flex flex-wrap items-end gap-4">
           <div className="w-[180px]">
             <SelectLogpresso
               size="medium"
@@ -235,7 +267,7 @@ export default function SelectLogpressoDemo() {
           <tbody>
             <tr className={`border-b ${isDark ? 'border-[#151c33] text-[#ebebeb]' : 'border-gray-100'}`}>
               <td className="py-2 pr-4 font-mono text-xs">size</td>
-              <td className="py-2 pr-4">small (24px) / medium (30px)</td>
+              <td className="py-2 pr-4">small (24px) / medium (30px) / large (36px) / xlarge (40px)</td>
               <td className="py-2 font-mono text-xs">medium</td>
             </tr>
             <tr className={`border-b ${isDark ? 'border-[#151c33] text-[#ebebeb]' : 'border-gray-100'}`}>
@@ -281,7 +313,7 @@ export default function SelectLogpressoDemo() {
           </tbody>
         </table>
         <p className={`mt-3 text-sm ${isDark ? 'text-[#778293]' : 'text-[#111827]/70'}`}>
-          트리거 높이는 Logpresso control height(Small 24px / Medium 30px)를 따릅니다. 열린 옵션
+          트리거 높이는 Logpresso control height(Small 24px / Medium 30px / Large 36px / XLarge 40px)를 따릅니다. 열린 옵션
           패널은 별도 소유권(Overlay Panel)이므로 트리거와 분리해 표면·border를 다르게
           스타일링했습니다. 테마는{' '}
           <code className="font-mono text-xs">&lt;html data-theme&gt;</code> 값을 자동 감지하며,
@@ -291,7 +323,7 @@ export default function SelectLogpressoDemo() {
           chain={selectChain}
           groups={selectGroups}
           customProps={[
-            {name: 'size', desc: 'small / medium', default: 'medium'},
+            {name: 'size', desc: 'small / medium / large / xlarge', default: 'medium'},
             {name: 'label', desc: '상단 라벨 텍스트'},
             {name: 'items', desc: '{id, name} 형태의 옵션 배열'},
             {name: 'errorMessage', desc: '오류 메시지'},
